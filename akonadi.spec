@@ -60,7 +60,7 @@ Obsoletes:      %{_lib}akonadi_protocolinternals4 <= 4.0.70-1
 %postun -n %libakonadiprotocolinternals -p /sbin/ldconfig
 
 %files -n %libakonadiprotocolinternals
-%defattr(-,root,roo,-)
+%defattr(-,root,root,-)
 %_kde_libdir/libakonadiprotocolinternals.so.%{akonadiprotocolinternals_major}*
 
 #------------------------------------------------------
