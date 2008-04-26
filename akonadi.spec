@@ -48,9 +48,10 @@ Group: System/Libraries
 %define akonadiprotocolinternals_major 0
 %define libakonadiprotocolinternals %mklibname akonadiprotocolinternals %{akonadiprotocolinternals_major}
 
-%package -n %libakonadiprotocolinternals
-Summary: %name library
-Group: System/Libraries
+%package -n     %libakonadiprotocolinternals
+Summary:        %name library
+Group:          System/Libraries
+Obsoletes:      %{_lib}akonadi_protocolinternals4 <= 4.0.70-1
 
 %description -n %libakonadiprotocolinternals
 %name library.
@@ -68,8 +69,8 @@ Group: System/Libraries
 %package        devel
 Summary:        Devel stuff for %name
 Group:          Development/KDE and Qt
-Conflicts:      kdepimlibs4-devel <= 4.0.70-1
-Conflicts:      kdepim4-devel <= 2:4.0.70-1
+Conflicts:      kdepimlibs4-devel < 4.0.70-2
+Conflicts:      kdepim4-devel < 2:4.0.70-2
 
 %description  devel
 This package contains header files needed if you wish to build applications
