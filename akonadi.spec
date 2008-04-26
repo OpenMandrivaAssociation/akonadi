@@ -65,9 +65,11 @@ Group: System/Libraries
 #------------------------------------------------------
 
 
-%package devel
-Summary: Devel stuff for %name
-Group: Development/KDE and Qt
+%package        devel
+Summary:        Devel stuff for %name
+Group:          Development/KDE and Qt
+Conflicts:      kdepimlibs4-devel <= 4.0.70-1
+Conflicts:      kdepim4-devel <= 2:4.0.70-1
 
 %description  devel
 This package contains header files needed if you wish to build applications
