@@ -1,10 +1,7 @@
-%define         svn   800427
-
-Name:           akonadi
-#TODO: Find a better summary
-Summary:        PIM Storage Service
-Version:        4.0.70
-Release:        %mkrel 0.%{svn}.1
+Name: akonadi
+Summary: An extensible cross-desktop storage service for PIM
+Version:        4.0.80
+Release:        %mkrel 0.1
 Url:            http://websvn.kde.org/trunk/kdesupport/akonadi
 License:        LGPL v2+
 Group:          Networking/WWW
@@ -13,7 +10,8 @@ Source0:        %{name}-%{version}.%{svn}.tar.bz2
 BuildRequires:  qt4-devel >= 4.4.0
 
 %description
-Akonadi: A PIM Storage Service
+An extensible cross-desktop storage service for PIM data and meta data providing
+concurrent read, write, and query access.
 
 %files
 %defattr(-,root,root)
@@ -76,11 +74,8 @@ based on %name
 
 %files devel
 %defattr(-,root,root)
-%dir %{_kde_includedir}/akonadi
-%dir %{_kde_includedir}/akonadi/private
-%{_kde_includedir}/akonadi/private/*.h
-%{_kde_libdir}/libakonadiprivate.so
-%{_kde_libdir}/libakonadiprotocolinternals.so
+%{_kde_includedir}/*
+%{_kde_libdir}/*.so
 
 #--------------------------------------------------------------------
 
@@ -96,4 +91,4 @@ cd build
 make DESTDIR=%buildroot install
 
 %clean
-%{__rm} -rf "%{buildroot}"
+rm -rf "%{buildroot}"
