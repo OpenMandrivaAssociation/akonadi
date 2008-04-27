@@ -32,6 +32,7 @@ concurrent read, write, and query access.
 %package -n %libakonadiprivate
 Summary: %name library
 Group: System/Libraries
+Obsoletes:      %{_lib}akonadiprivate4 <= 4.0.70-1
 
 %description -n %libakonadiprivate
 %name library.
