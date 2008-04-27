@@ -9,6 +9,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  qt4-devel >= 4.4.0
 BuildRequires:  shared-mime-info >=  0.20
+Conflicts:      kde4-akonadi < 4.0.71-1
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data providing
