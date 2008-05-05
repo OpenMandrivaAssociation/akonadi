@@ -16,35 +16,19 @@ Conflicts: kde4-akonadi < 4.0.71-1
 An extensible cross-desktop storage service for PIM data and meta data providing
 concurrent read, write, and query access.
 
-%files
-%defattr(-,root,root)
-%{_kde_bindir}/akonadi_control
-%{_kde_bindir}/akonadictl
-%{_kde_bindir}/akonadiserver
-%{_kde_datadir}/config/akonadi/mysql-global.conf
-%{_datadir}/dbus-1/interfaces/*.xml
-%{_datadir}/dbus-1/services/org.kde.Akonadi.Control.service
-%{_datadir}/mime/packages/akonadi-mime.xml
 
-#---------------------------------------------------------------------
-
-%define akonadiprivate_major 0
-%define libakonadiprivate %mklibname akonadiprivate %{akonadiprivate_major}
-
-%package -n %libakonadiprivate
-Summary: %name library
+%package common
+Summary: %name common mime and dbus calls
 Group: System/Libraries
-Obsoletes: %{_lib}akonadiprivate4 <= 4.0.70-1
+Obsoletes: akonadi
 
-%description -n %libakonadiprivate
-%name library.
+%description common
+%name common mime and dbus calls.
 
-%post -n %libakonadiprivate -p /sbin/ldconfig
-%postun -n %libakonadiprivate -p /sbin/ldconfig
-
-%files -n %libakonadiprivate
-%defattr(-,root,root,-)
-%_kde_libdir/libakonadiprivate.so.%{akonadiprivate_major}*
+%files common
+%defattr(-,root,root)
+%{_datadir}/dbus-1/interfaces/*.xml
+%{_datadir}/mime/packages/akonadi-mime.xml
 
 #------------------------------------------------------
 
@@ -55,6 +39,7 @@ Obsoletes: %{_lib}akonadiprivate4 <= 4.0.70-1
 Summary:        %name library
 Group:          System/Libraries
 Obsoletes:      %{_lib}akonadi_protocolinternals4 <= 4.0.70-1
+Requires: %name-common
 
 %description -n %libakonadiprotocolinternals
 %name library.
@@ -69,11 +54,12 @@ Obsoletes:      %{_lib}akonadi_protocolinternals4 <= 4.0.70-1
 #------------------------------------------------------
 
 
-%package        devel
-Summary:        Devel stuff for %name
-Group:          Development/KDE and Qt
-Conflicts:      kdepimlibs4-devel < 4.0.70-2
-Conflicts:      kdepim4-devel < 2:4.0.70-2
+%package devel
+Summary: Devel stuff for %name
+Group: Development/KDE and Qt
+Conflicts: kdepimlibs4-devel < 4.0.70-2
+Conflicts: kdepim4-devel < 2:4.0.70-2
+Requires: %libakonadiprotocolinternals
 
 %description  devel
 This package contains header files needed if you wish to build applications
