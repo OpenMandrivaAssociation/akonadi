@@ -1,7 +1,7 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
 Version: 0.80.0
-Release: %mkrel 1
+Release: %mkrel 2
 Url: http://websvn.kde.org/trunk/kdesupport/akonadi
 License: LGPL v2+
 Group: Networking/WWW
@@ -10,6 +10,8 @@ Source0: %{name}-%{version}.tar.bz2
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: shared-mime-info >=  0.20
 BuildRequires: kde4-macros
+BuildRequires: libxslt-proc
+BuildRequires: libxml2-utils
 Conflicts: kde4-akonadi < 4.0.71-1
 
 %description
