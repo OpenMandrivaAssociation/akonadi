@@ -27,7 +27,10 @@ Obsoletes: akonadi
 
 %files common
 %defattr(-,root,root)
+%{_kde_bindir}/*
+%{_kde_datadir}/config/akonadi
 %{_datadir}/dbus-1/interfaces/*.xml
+%{_datadir}/dbus-1/services/*
 %{_datadir}/mime/packages/akonadi-mime.xml
 
 #------------------------------------------------------
@@ -51,15 +54,35 @@ Requires: %name-common
 %defattr(-,root,root,-)
 %_kde_libdir/libakonadiprotocolinternals.so.%{akonadiprotocolinternals_major}*
 
+#---------------------------------------------------------------------
+
+%define akonadiprivate_major 0
+%define libakonadiprivate %mklibname akonadiprivate %{akonadiprivate_major}
+
+%package -n %libakonadiprivate
+Summary: %name library
+Group: System/Libraries
+Obsoletes:      %{_lib}akonadiprivate4 <= 4.0.70-1
+
+%description -n %libakonadiprivate
+%name library.
+
+%post -n %libakonadiprivate -p /sbin/ldconfig
+%postun -n %libakonadiprivate -p /sbin/ldconfig
+
+%files -n %libakonadiprivate
+%defattr(-,root,root,-)
+%_kde_libdir/libakonadiprivate.so.%{akonadiprivate_major}*
+
 #------------------------------------------------------
 
-
-%package devel
-Summary: Devel stuff for %name
-Group: Development/KDE and Qt
+%package   devel
+Summary:   Devel stuff for %name
+Group:     Development/KDE and Qt
 Conflicts: kdepimlibs4-devel < 4.0.70-2
 Conflicts: kdepim4-devel < 2:4.0.70-2
-Requires: %libakonadiprotocolinternals
+Requires:  %libakonadiprotocolinternals = %version
+Requires:  %libakonadiprivate = %version
 
 %description  devel
 This package contains header files needed if you wish to build applications
