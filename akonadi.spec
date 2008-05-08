@@ -8,14 +8,15 @@ Url: http://websvn.kde.org/trunk/kdesupport/akonadi
 License: LGPL v2+
 Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-Source0: %{name}-%{version}.%svn.tar.bz2
+Source0:       %{name}-%{version}.%svn.tar.bz2
+Patch0:        akonadi-0.80.0-fix-automoc-detection.patch
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: shared-mime-info >=  0.20
 BuildRequires: kde4-macros
 BuildRequires: libxslt-proc
 BuildRequires: libxml2-utils
 BuilDrequires: automoc
-Conflicts: kde4-akonadi < 4.0.71-1
+Conflicts:     kde4-akonadi < 4.0.71-1
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data providing
@@ -103,6 +104,7 @@ based on %name
 
 %prep
 %setup -q  -n %name
+%patch0 -p0
 
 %build
 %cmake_kde4
