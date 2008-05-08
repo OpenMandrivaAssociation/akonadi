@@ -1,17 +1,20 @@
+%define svn   805338
+
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
 Version: 0.80.0
-Release: %mkrel 2
+Release: %mkrel 3.%svn.3
 Url: http://websvn.kde.org/trunk/kdesupport/akonadi
 License: LGPL v2+
 Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-Source0: %{name}-%{version}.tar.bz2
+Source0: %{name}-%{version}.%svn.tar.bz2
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: shared-mime-info >=  0.20
 BuildRequires: kde4-macros
 BuildRequires: libxslt-proc
 BuildRequires: libxml2-utils
+BuilDrequires: automoc
 Conflicts: kde4-akonadi < 4.0.71-1
 
 %description
@@ -94,11 +97,12 @@ based on %name
 %defattr(-,root,root)
 %{_kde_includedir}/*
 %{_kde_libdir}/*.so
+%{_kde_libdir}/pkgconfig/akonadi.pc
 
 #--------------------------------------------------------------------
 
 %prep
-%setup -q 
+%setup -q  -n %name
 
 %build
 %cmake_kde4
