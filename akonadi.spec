@@ -1,4 +1,4 @@
-%define svn   805338
+%define svn   808261
 
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
