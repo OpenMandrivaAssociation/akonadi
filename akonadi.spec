@@ -1,9 +1,9 @@
-%define svn   808261
+%define svn   811818
 
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 0.80.0
-Release: %mkrel 3.%svn.4
+Version: 0.81.0
+Release: %mkrel 0.%svn.1
 Url: http://websvn.kde.org/trunk/kdesupport/akonadi
 License: LGPL v2+
 Group: Networking/WWW
@@ -103,7 +103,7 @@ based on %name
 #--------------------------------------------------------------------
 
 %prep
-%setup -q  -n %name
+%setup -q 
 %patch0 -p0
 
 %build
