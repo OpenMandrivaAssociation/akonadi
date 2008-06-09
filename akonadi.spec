@@ -50,8 +50,12 @@ Requires: %name-common
 %description -n %libakonadiprotocolinternals
 %name library.
 
+%if %mdkversion < 200900
 %post -n %libakonadiprotocolinternals -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libakonadiprotocolinternals -p /sbin/ldconfig
+%endif
 
 %files -n %libakonadiprotocolinternals
 %defattr(-,root,root,-)
@@ -70,8 +74,12 @@ Obsoletes:      %{_lib}akonadiprivate4 <= 4.0.70-1
 %description -n %libakonadiprivate
 %name library.
 
+%if %mdkversion < 200900
 %post -n %libakonadiprivate -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libakonadiprivate -p /sbin/ldconfig
+%endif
 
 %files -n %libakonadiprivate
 %defattr(-,root,root,-)
