@@ -115,8 +115,16 @@ based on %name
 %make
 
 %install
+rm -rf %buildroot
+
 cd build
 make DESTDIR=%buildroot install
+
+%if %mdkversion >200810
+mkdir -p %buildroot/%_datadir/dbus-1
+mv %buildroot/%{_kde_datadir}/dbus-1/services %buildroot/%_datadir/dbus-1
+mv %buildroot/%{_kde_datadir}/mime %buildroot/%_datadir/
+%endif
 
 %clean
 rm -rf "%{buildroot}"
