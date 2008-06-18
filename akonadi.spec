@@ -1,7 +1,7 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 0.81.0
-Release: %mkrel 2
+Version: 0.82.0
+Release: %mkrel 1
 Url: http://websvn.kde.org/trunk/kdesupport/akonadi
 License: LGPL v2+
 Group: Networking/WWW
