@@ -120,7 +120,7 @@ rm -rf %buildroot
 cd build
 make DESTDIR=%buildroot install
 
-%if %mdkversion >200810
+%if %mdkversion < 200900
 mkdir -p %buildroot/%_datadir/dbus-1
 mv %buildroot/%{_kde_datadir}/dbus-1/services %buildroot/%_datadir/dbus-1
 mv %buildroot/%{_kde_datadir}/mime %buildroot/%_datadir/
