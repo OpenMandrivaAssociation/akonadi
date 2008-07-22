@@ -1,6 +1,6 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 0.82.0
+Version: 1.0.0
 Release: %mkrel 1
 Url: http://pim.kde.org/akonadi/
 License: LGPL v2+
@@ -38,7 +38,7 @@ Obsoletes: akonadi
 
 #------------------------------------------------------
 
-%define akonadiprotocolinternals_major 0
+%define akonadiprotocolinternals_major 1
 %define libakonadiprotocolinternals %mklibname akonadiprotocolinternals %{akonadiprotocolinternals_major}
 
 %package -n     %libakonadiprotocolinternals
@@ -63,7 +63,7 @@ Requires: %name-common
 
 #---------------------------------------------------------------------
 
-%define akonadiprivate_major 0
+%define akonadiprivate_major 1
 %define libakonadiprivate %mklibname akonadiprivate %{akonadiprivate_major}
 
 %package -n %libakonadiprivate
