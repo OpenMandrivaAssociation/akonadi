@@ -1,9 +1,9 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
 Version: 1.0.0
-Release: %mkrel 1
+Release: %mkrel 2
 Url: http://pim.kde.org/akonadi/
-License: LGPL v2+
+License: LGPLv2+
 Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Source0: http://akonadi.omat.nl/%{name}-%{version}.tar.bz2
@@ -12,7 +12,8 @@ BuildRequires: shared-mime-info >=  0.20
 BuildRequires: kde4-macros
 BuildRequires: libxslt-proc
 BuildRequires: libxml2-utils
-BuilDrequires: automoc
+BuildRequires: automoc
+BuildRequires: mysql-client
 Conflicts:     kde4-akonadi < 4.0.71-1
 
 %description
@@ -111,7 +112,7 @@ based on %name
 %setup -q 
 
 %build
-%cmake_kde4
+%cmake_kde4 -DMYSQLD_EXECUTABLE=%_sbindir
 %make
 
 %install
