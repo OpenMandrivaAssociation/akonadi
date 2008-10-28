@@ -16,7 +16,8 @@ BuildRequires: libxml2-utils
 BuildRequires: automoc
 BuildRequires: mysql-client
 
-Requires:      mysql-common
+Requires:      qt4-database-plugin-mysql
+Suggests:      mysql-common
 
 Conflicts:     kde4-akonadi < 4.0.71-1
 
