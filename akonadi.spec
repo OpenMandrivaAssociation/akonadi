@@ -14,6 +14,7 @@ BuildRequires: libxslt-proc
 BuildRequires: libxml2-utils
 BuildRequires: automoc
 BuildRequires: mysql-client
+BuildRequires: boost-devel
 
 Requires:      qt4-database-plugin-mysql
 Suggests:      mysql-common
