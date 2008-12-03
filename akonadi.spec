@@ -1,7 +1,7 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
 Version: 1.0.80
-Release: %mkrel 1
+Release: %mkrel 2
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
@@ -37,7 +37,7 @@ Obsoletes: akonadi
 %files common
 %defattr(-,root,root)
 %{_kde_bindir}/*
-%{_kde_datadir}/config/akonadi
+%{_sysconfdir}/akonadi
 %{_datadir}/dbus-1/services/*
 %{_datadir}/mime/packages/akonadi-mime.xml
 %{_kde_datadir}/dbus-1/interfaces/*.xml
@@ -117,7 +117,7 @@ based on %name
 %setup -q 
 
 %build
-%cmake_kde4 -DMYSQLD_EXECUTABLE=%_sbindir/mysqld
+%cmake_kde4 -DMYSQLD_EXECUTABLE=%_sbindir/mysqld -DCONFIG_INSTALL_DIR=%{_sysconfdir}
 %make
 
 %install
