@@ -7,6 +7,7 @@ License: LGPLv2+
 Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Source0: http://akonadi.omat.nl/%{name}-%{version}.tar.bz2
+Patch0: akonadi-1.0.80-fix-conf-install.patch
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: shared-mime-info >=  0.20
 BuildRequires: kde4-macros
@@ -114,10 +115,11 @@ based on %name
 #--------------------------------------------------------------------
 
 %prep
-%setup -q 
+%setup -q
+%patch0 -p0
 
 %build
-%cmake_kde4 -DMYSQLD_EXECUTABLE=%_sbindir/mysqld -DCONFIG_INSTALL_DIR=%{_sysconfdir}
+%cmake_kde4 -DMYSQLD_EXECUTABLE=%_sbindir/mysqld
 %make
 
 %install
