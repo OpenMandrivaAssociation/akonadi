@@ -1,7 +1,7 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
 Version: 1.1.1
-Release: %mkrel 1
+Release: %mkrel 2
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
@@ -15,10 +15,6 @@ BuildRequires: libxml2-utils
 BuildRequires: automoc
 BuildRequires: mysql-client
 BuildRequires: boost-devel
-
-Requires:      qt4-database-plugin-mysql
-Suggests:      mysql-common
-
 Conflicts:     kde4-akonadi < 4.0.71-1
 
 %description
@@ -30,6 +26,8 @@ concurrent read, write, and query access.
 Summary: %name common mime and dbus calls
 Group: System/Libraries
 Obsoletes: akonadi
+Requires: qt4-database-plugin-mysql
+Requires: mysql-common
 
 %description common
 %name common mime and dbus calls.
