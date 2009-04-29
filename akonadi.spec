@@ -1,12 +1,14 @@
+%define revision 959021
+
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 1.1.1
-Release: %mkrel 3
+Version: 1.1.80
+Release: %mkrel 0.%revision.1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-Source0: http://akonadi.omat.nl/%{name}-%{version}.tar.bz2
+Source0: http://akonadi.omat.nl/%{name}-%{version}.%revision.tar.bz2
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: shared-mime-info >=  0.20
 BuildRequires: kde4-macros
@@ -20,7 +22,6 @@ Conflicts:     kde4-akonadi < 4.0.71-1
 %description
 An extensible cross-desktop storage service for PIM data and meta data providing
 concurrent read, write, and query access.
-
 
 %package common
 Summary: %name common mime and dbus calls
@@ -54,13 +55,6 @@ Requires: %name-common
 %description -n %libakonadiprotocolinternals
 %name library.
 
-%if %mdkversion < 200900
-%post -n %libakonadiprotocolinternals -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libakonadiprotocolinternals -p /sbin/ldconfig
-%endif
-
 %files -n %libakonadiprotocolinternals
 %defattr(-,root,root,-)
 %_kde_libdir/libakonadiprotocolinternals.so.%{akonadiprotocolinternals_major}*
@@ -77,13 +71,6 @@ Obsoletes:      %{_lib}akonadiprivate4 <= 4.0.70-1
 
 %description -n %libakonadiprivate
 %name library.
-
-%if %mdkversion < 200900
-%post -n %libakonadiprivate -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libakonadiprivate -p /sbin/ldconfig
-%endif
 
 %files -n %libakonadiprivate
 %defattr(-,root,root,-)
@@ -112,7 +99,7 @@ based on %name
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version
+%setup -q -n %name
 
 %build
 %cmake_kde4 -DMYSQLD_EXECUTABLE=%_sbindir/mysqld -DCONFIG_INSTALL_DIR=%{_sysconfdir}
@@ -123,12 +110,6 @@ rm -rf %buildroot
 
 cd build
 make DESTDIR=%buildroot install
-
-%if %mdkversion < 200900
-mkdir -p %buildroot/%_datadir/dbus-1
-mv %buildroot/%{_kde_datadir}/dbus-1/services %buildroot/%_datadir/dbus-1
-mv %buildroot/%{_kde_datadir}/mime %buildroot/%_datadir/
-%endif
 
 %clean
 rm -rf "%{buildroot}"
