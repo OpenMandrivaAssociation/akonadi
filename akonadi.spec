@@ -17,6 +17,7 @@ BuildRequires: libxml2-utils
 BuildRequires: automoc
 BuildRequires: mysql-client
 BuildRequires: boost-devel
+BuildRequires: soprano-devel
 Conflicts:     kde4-akonadi < 4.0.71-1
 
 %description
