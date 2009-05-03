@@ -96,7 +96,7 @@ based on %name
 %{_kde_includedir}/*
 %{_kde_libdir}/*.so
 %{_kde_libdir}/pkgconfig/akonadi.pc
-
+%{_kde_libdir}/cmake/Akonadi-1.1.85
 #--------------------------------------------------------------------
 
 %prep
