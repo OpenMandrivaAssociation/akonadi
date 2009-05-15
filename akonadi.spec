@@ -1,4 +1,4 @@
-%define revision 964925
+%define revision 968058
 
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
