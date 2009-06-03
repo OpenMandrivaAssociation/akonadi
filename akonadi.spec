@@ -1,23 +1,12 @@
-%define branch 1
-%{?_branch: %{expand: %%global branch 1}}
-
-%if %branch
-%define revision 970837
-%endif
-
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 1.1.85
-Release: %mkrel 0.%revision.2
+Version: 1.1.90
+Release: %mkrel 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-%if %branch
-Source0: http://akonadi.omat.nl/%{name}-%{version}.%revision.tar.bz2
-%else
 Source0: http://akonadi.omat.nl/%{name}-%{version}.tar.bz2
-%endif
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: shared-mime-info >=  0.20
 BuildRequires: kde4-macros
@@ -112,11 +101,8 @@ based on %name
 #--------------------------------------------------------------------
 
 %prep
-%if %branch
-%setup -q -n %name
-%else
 %setup -q
-%endif
+
 %build
 %cmake_kde4 -DMYSQLD_EXECUTABLE=%_sbindir/mysqld -DCONFIG_INSTALL_DIR=%{_sysconfdir}
 %make
