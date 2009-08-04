@@ -9,6 +9,7 @@ Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Source0: http://akonadi.omat.nl/%{name}-%{version}.tar.bz2
 BuildRequires: qt4-devel >= 4.4.0
+BuildRequires: qt4-qtdbus
 BuildRequires: shared-mime-info >=  0.20
 BuildRequires: kde4-macros
 BuildRequires: libxslt-proc
