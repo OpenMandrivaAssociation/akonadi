@@ -1,7 +1,7 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
 Version: 1.2.1
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
@@ -20,6 +20,7 @@ BuildRequires: boost-devel
 BuildRequires: soprano-devel
 Requires: qt4-database-plugin-mysql
 Requires: mysql
+Requires: kdepim4-runtime
 Obsoletes: akonadi-common < 1:1.1.95
 Conflicts: kde4-akonadi < 4.0.71-1
 
