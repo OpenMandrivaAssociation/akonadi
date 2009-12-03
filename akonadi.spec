@@ -9,7 +9,7 @@ Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-Source0: http://akonadi.omat.nl/%{name}-%{version}.%svn.tar.bz2
+Source0: http://download.akonadi-project.org/%{name}-%{version}.%svn.tar.bz2
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: qt4-qtdbus
 BuildRequires: shared-mime-info >=  0.20
