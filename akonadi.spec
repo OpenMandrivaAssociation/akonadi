@@ -1,8 +1,8 @@
-%define svn 1064406
+%define svn 1070828
 
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 1.2.80
+Version: 1.2.90
 Release: %mkrel 0.%svn.1
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
