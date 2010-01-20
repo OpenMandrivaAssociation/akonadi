@@ -1,15 +1,13 @@
-%define svn 1070828
-
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 1.2.90
-Release: %mkrel 0.%svn.1
+Version: 1.3.0
+Release: %mkrel 1
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-Source0: http://download.akonadi-project.org/%{name}-%{version}.%svn.tar.bz2
+Source0: http://download.akonadi-project.org/%{name}-%{version}.tar.bz2
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: qt4-qtdbus
 BuildRequires: shared-mime-info >=  0.20
@@ -114,17 +112,15 @@ based on %name
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name
+%setup -q -n %name-%version
 
 %build
 %cmake_kde4 -DMYSQLD_EXECUTABLE=%_sbindir/mysqld -DCONFIG_INSTALL_DIR=%{_sysconfdir}
 %make
 
 %install
-rm -rf %buildroot
-
-cd build
-make DESTDIR=%buildroot install
+rm -rf %{buildroot}
+%makeinstall_std -C build
 
 %clean
-rm -rf "%{buildroot}"
+rm -rf %{buildroot}
