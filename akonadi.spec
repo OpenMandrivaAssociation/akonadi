@@ -1,7 +1,7 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
 Version: 1.3.1
-Release: %mkrel 8
+Release: %mkrel 9
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
@@ -10,6 +10,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Source0: http://download.akonadi-project.org/%{name}-%{version}.tar.bz2
 Patch0:        akonadi-1.3.1-fix-mysql-plugin-load.patch
 Patch100:      akonadi-1.3.1-t1111602-fix-add-of-missing-tables.patch
+Patch101:      akonadi-1.3.1-b1112129-fix-mysql_upgrade-usage.patch
 Patch200:      akonadi-1.3.1-t1087511-fix-race-startup.patch
 Patch201:      akonadi-1.3.1-t1088319-register-dbus.patch
 BuildRequires: qt4-devel >= 4.4.0
@@ -119,6 +120,7 @@ based on %name
 %setup -q -n %name-%version
 %patch0 -p0
 %patch100 -p0
+%patch101 -p0
 %patch200 -p0
 %patch201 -p0
 
