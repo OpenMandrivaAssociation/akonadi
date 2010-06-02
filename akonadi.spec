@@ -1,7 +1,7 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
 Version: 1.3.1
-Release: %mkrel 10
+Release: %mkrel 11
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
@@ -26,6 +26,8 @@ BuildRequires: soprano-devel
 Requires: qt4-database-plugin-mysql
 %if %{mdkversion} >= 201000
 Requires: mysql-core
+# (nl) needed for patch100 and patch101
+Requires: mysql-common
 %else
 Requires: mysql
 %endif
