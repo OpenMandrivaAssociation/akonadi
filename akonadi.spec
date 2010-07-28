@@ -1,15 +1,13 @@
-%define rev 1132031
-
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 1.3.81
-Release: %mkrel 0.%rev.1
+Version: 1.3.90
+Release: %mkrel 1
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-Source0: http://download.akonadi-project.org/%{name}-%{version}.%rev.tar.bz2
+Source0: http://download.akonadi-project.org/%{name}-%{version}.tar.bz2
 Patch0:        akonadi-1.3.1-fix-mysql-plugin-load.patch
 Patch100:      akonadi-1.3.1-t1111602-fix-add-of-missing-tables.patch
 Patch101:      akonadi-1.3.1-b1112129-fix-mysql_upgrade-usage.patch
@@ -121,7 +119,7 @@ based on %name
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name
+%setup -q -n %name-%version
 %patch0 -p1
 
 %build
