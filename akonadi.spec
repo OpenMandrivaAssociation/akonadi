@@ -24,12 +24,10 @@ BuildRequires: mysql-devel
 BuildRequires: boost-devel
 BuildRequires: soprano-devel
 Requires: qt4-database-plugin-mysql
-%if %{mdkversion} >= 201000
 Requires: mysql-core
 Requires: mysql-common
-%else
-Requires: mysql
-%endif
+# Needed for mysqlcheck  which is used in akonadi
+Requires: mysql-client 
 Obsoletes: akonadi-common < 1:1.1.95
 Conflicts: kde4-akonadi < 4.0.71-1
 
