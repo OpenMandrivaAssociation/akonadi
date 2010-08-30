@@ -1,7 +1,7 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 1.4.0
-Release: %mkrel 2
+Version: 1.4.52
+Release: %mkrel 1
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
@@ -9,10 +9,6 @@ Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Source0: http://download.akonadi-project.org/%{name}-%{version}.tar.bz2
 Patch0:        akonadi-1.3.1-fix-mysql-plugin-load.patch
-Patch100:      akonadi-1.3.1-t1111602-fix-add-of-missing-tables.patch
-Patch101:      akonadi-1.3.1-b1112129-fix-mysql_upgrade-usage.patch
-Patch200:      akonadi-1.3.1-t1087511-fix-race-startup.patch
-Patch201:      akonadi-1.3.1-t1088319-register-dbus.patch
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: qt4-qtdbus
 BuildRequires: shared-mime-info >=  0.20
@@ -74,23 +70,6 @@ Obsoletes:      %{_lib}akonadi_protocolinternals4 <= 4.0.70-1
 %defattr(-,root,root,-)
 %_kde_libdir/libakonadiprotocolinternals.so.%{akonadiprotocolinternals_major}*
 
-#---------------------------------------------------------------------
-
-%define akonadiprivate_major 1
-%define libakonadiprivate %mklibname akonadiprivate %{akonadiprivate_major}
-
-%package -n %libakonadiprivate
-Summary: %name library
-Group: System/Libraries
-Obsoletes:      %{_lib}akonadiprivate4 <= 4.0.70-1
-
-%description -n %libakonadiprivate
-%name library.
-
-%files -n %libakonadiprivate
-%defattr(-,root,root,-)
-%_kde_libdir/libakonadiprivate.so.%{akonadiprivate_major}*
-
 #------------------------------------------------------
 
 %package   devel
@@ -99,7 +78,6 @@ Group:     Development/KDE and Qt
 Conflicts: kdepimlibs4-devel < 4.0.70-2
 Conflicts: kdepim4-devel < 2:4.0.70-2
 Requires:  %libakonadiprotocolinternals = %epoch:%version
-Requires:  %libakonadiprivate = %epoch:%version
 Requires: akonadi-common = %epoch:%version
 
 %description  devel
