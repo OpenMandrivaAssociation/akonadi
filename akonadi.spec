@@ -1,7 +1,9 @@
+%define kde_snapshot svn1183867
+
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
 Version: 1.4.52
-Release: %mkrel 2
+Release: %mkrel 3.%{kde_snapshot}.1
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
@@ -9,7 +11,6 @@ Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Source0: http://download.akonadi-project.org/%{name}-%{version}.tar.bz2
 Patch0:        akonadi-1.3.1-fix-mysql-plugin-load.patch
-Patch1:        akonadi-1.4.52-remove_sqlite_version_assert.patch
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: qt4-qtdbus
 BuildRequires: shared-mime-info >=  0.20
@@ -98,7 +99,6 @@ based on %name
 %prep
 %setup -q -n %name-%version
 %patch0 -p1
-%patch1 -p3
 
 %build
 %cmake_kde4 -DMYSQLD_EXECUTABLE=%_sbindir/mysqld -DCONFIG_INSTALL_DIR=%{_sysconfdir}
