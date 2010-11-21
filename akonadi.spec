@@ -1,15 +1,15 @@
-%define kde_snapshot svn1183867
+%define kde_snapshot git20101119
 
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 1.4.52
-Release: %mkrel 3.%{kde_snapshot}.1
+Version: 1.4.54
+Release: %mkrel 1.%{kde_snapshot}.1
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-Source0: http://download.akonadi-project.org/%{name}-%{version}.tar.bz2
+Source0: http://download.akonadi-project.org/%{name}-%{version}.tar.xz
 Patch0:        akonadi-1.3.1-fix-mysql-plugin-load.patch
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: qt4-qtdbus
