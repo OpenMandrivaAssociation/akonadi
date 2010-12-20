@@ -2,7 +2,7 @@
 
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 1.4.80
+Version: 1.4.90
 Release: %mkrel 1
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
