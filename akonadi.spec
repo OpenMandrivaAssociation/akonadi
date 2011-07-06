@@ -1,12 +1,11 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
 Version: 1.5.80
-Release: %mkrel 1
+Release: 1
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
-BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Source0: http://download.akonadi-project.org/%{name}-%{version}.tar.bz2
 Patch0:        akonadi-1.3.1-fix-mysql-plugin-load.patch
 BuildRequires: qt4-devel >= 4.4.0
@@ -32,7 +31,6 @@ An extensible cross-desktop storage service for PIM data and meta data providing
 concurrent read, write, and query access.
 
 %files
-%defattr(-,root,root)
 %{_kde_bindir}/*
 %{_sysconfdir}/akonadi
 %{_datadir}/dbus-1/services/*
@@ -67,7 +65,6 @@ Obsoletes:      %{_lib}akonadi_protocolinternals4 <= 4.0.70-1
 %name library.
 
 %files -n %libakonadiprotocolinternals
-%defattr(-,root,root,-)
 %_kde_libdir/libakonadiprotocolinternals.so.%{akonadiprotocolinternals_major}*
 
 #------------------------------------------------------
@@ -85,7 +82,6 @@ This package contains header files needed if you wish to build applications
 based on %name
 
 %files devel
-%defattr(-,root,root)
 %{_kde_includedir}/*
 %{_kde_libdir}/*.so
 %{_kde_libdir}/pkgconfig/akonadi.pc
@@ -103,11 +99,5 @@ based on %name
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std -C build
 
-#We need to expand libdir into mysql-global.conf
-#sed -e 's,LIBDIR,%{_libdir},g' -i  %buildroot/%_sysconfdir/akonadi/mysql-global.conf
-
-%clean
-rm -rf %{buildroot}
