@@ -1,13 +1,12 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 1.5.80
-Release: 3
+Version: 1.6.2
+Release: 1
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
 Source0: http://download.akonadi-project.org/%{name}-%{version}.tar.bz2
-Patch0:        akonadi-1.3.1-fix-mysql-plugin-load.patch
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: qt4-qtdbus
 BuildRequires: shared-mime-info >=  0.20
@@ -92,7 +91,6 @@ based on %name
 
 %prep
 %setup -q -n %name-%version
-#%patch0 -p1
 
 %build
 %cmake_kde4 -DMYSQLD_EXECUTABLE=%_sbindir/mysqld -DCONFIG_INSTALL_DIR=%{_sysconfdir}
