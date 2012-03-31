@@ -1,12 +1,12 @@
 Name: akonadi
 Summary: An extensible cross-desktop storage service for PIM
-Version: 1.7.0
+Version: 1.7.1
 Release: 1
 Epoch: 1
 Url: http://pim.kde.org/akonadi/
 License: LGPLv2+
 Group: Networking/WWW
-Source0: http://download.akonadi-project.org/%{name}-%{version}.tar.bz2
+Source0: http://download.kde.org/stable/akonadi/src/%{name}-%{version}.tar.bz2
 BuildRequires: qt4-devel >= 4.4.0
 BuildRequires: qt4-qtdbus
 BuildRequires: shared-mime-info >=  0.20
@@ -26,8 +26,9 @@ Obsoletes: akonadi-common < 1:1.1.95
 Conflicts: kde4-akonadi < 4.0.71-1
 
 %description
-An extensible cross-desktop storage service for PIM data and meta data providing
-concurrent read, write, and query access.
+An extensible cross-desktop storage service for PIM data
+and meta data providing concurrent read, write, and
+query access.
 
 %files
 %{_kde_bindir}/*
