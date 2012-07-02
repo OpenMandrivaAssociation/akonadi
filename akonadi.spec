@@ -1,12 +1,12 @@
 Name:		akonadi
 Summary:	An extensible cross-desktop storage service for PIM
-Version:	1.7.2
+Version:	1.7.90
 Release:	1
 Epoch:		1
 Url:		http://pim.kde.org/akonadi/
 License:	LGPLv2+
 Group:		Networking/WWW
-Source0:	http://download.kde.org/stable/akonadi/src/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/stable/akonadi/src/%{name}-%{version}.tar.bz2
 BuildRequires:	qt4-devel >= 4.4.0
 BuildRequires:	qt4-qtdbus
 BuildRequires:	shared-mime-info >=  0.20
@@ -22,13 +22,10 @@ Requires:	mysql-core
 Requires:	mysql-common
 # Needed for mysqlcheck  which is used in akonadi
 Requires:	mysql-client
-Obsoletes:	akonadi-common < 1:1.1.95
-Conflicts:	kde4-akonadi < 4.0.71-1
 
 %description
-An extensible cross-desktop storage service for PIM data
-and meta data providing concurrent read, write, and
-query access.
+An extensible cross-desktop storage service for PIM data and
+meta data providing concurrent read, write, and query access.
 
 %files
 %{_kde_bindir}/*
@@ -43,7 +40,6 @@ query access.
 %package common
 Group:		Networking/WWW
 Summary:	Dummy package to override old
-Obsoletes:	akonadi-common < 1:1.1.95
 
 %description common
 Dummy package to override old.
@@ -59,7 +55,6 @@ Dummy package to override old.
 %package -n %{libakonadiprotocolinternals}
 Summary:	%{name} library
 Group:		System/Libraries
-Obsoletes:	%{_lib}akonadi_protocolinternals4 <= 4.0.70-1
 
 %description -n %{libakonadiprotocolinternals}
 %{name} library.
@@ -72,8 +67,6 @@ Obsoletes:	%{_lib}akonadi_protocolinternals4 <= 4.0.70-1
 %package devel
 Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
-Conflicts:	kdepimlibs4-devel < 4.0.70-2
-Conflicts:	kdepim4-devel < 2:4.0.70-2
 Requires:	%{libakonadiprotocolinternals} = %{EVRD}
 Requires:	akonadi-common = %{EVRD}
 
