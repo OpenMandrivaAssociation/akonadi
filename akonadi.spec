@@ -1,12 +1,18 @@
 Name:		akonadi
 Summary:	An extensible cross-desktop storage service for PIM
-Version:	1.8.1
+Version:	1.9.0
 Release:	1
 Epoch:		1
 Url:		http://pim.kde.org/akonadi/
 License:	LGPLv2+
 Group:		Networking/WWW
-Source0:	ftp://ftp.kde.org/pub/kde/stable/akonadi/src/%{name}-%{version}.tar.bz2
+%define is_beta %(if test `echo %version |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
+%if %is_beta
+%define ftpdir unstable
+%else
+%define ftpdir stable
+%endif
+Source0:	ftp://ftp.kde.org/pub/kde/%ftpdir/akonadi/src/%{name}-%{version}.tar.bz2
 BuildRequires:	qt4-devel
 BuildRequires:	qt4-qtdbus
 BuildRequires:	shared-mime-info >= 0.20
@@ -92,6 +98,8 @@ based on %{name}
 
 %install
 %makeinstall_std -C build
+mkdir %buildroot%_libdir/qt4
+mv %buildroot%_libdir/plugins %buildroot%_libdir/qt4/
 
 %changelog
 * Wed Nov 07 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:1.8.1-1

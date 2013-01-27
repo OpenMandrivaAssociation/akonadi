@@ -1,2 +1,4 @@
+removed_sources:
+  akonadi-1.8.1.tar.bz2: 103f086cb8ed84e56be6e0717145e6f2d4689053
 sources:
-  "akonadi-1.8.1.tar.bz2": 103f086cb8ed84e56be6e0717145e6f2d4689053
+  akonadi-1.9.0.tar.bz2: 29f6591d58712939b5e396028d26527f35036aaf
