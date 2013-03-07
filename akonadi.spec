@@ -1,27 +1,27 @@
 Name:		akonadi
 Summary:	An extensible cross-desktop storage service for PIM
+Epoch:		1
 Version:	1.9.0
 Release:	2
-Epoch:		1
 Url:		http://pim.kde.org/akonadi/
 License:	LGPLv2+
 Group:		Networking/WWW
-%define is_beta %(if test `echo %version |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
+%define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %is_beta
 %define ftpdir unstable
 %else
 %define ftpdir stable
 %endif
-Source0:	ftp://ftp.kde.org/pub/kde/%ftpdir/akonadi/src/%{name}-%{version}.tar.bz2
-BuildRequires:	qt4-devel
+Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/akonadi/src/%{name}-%{version}.tar.bz2
+BuildRequires:	automoc
+BuildRequires:	kde4-macros
+BuildRequires:	libxml2-utils
 BuildRequires:	qt4-qtdbus
 BuildRequires:	shared-mime-info >= 0.20
-BuildRequires:	kde4-macros
-BuildRequires:	libxslt-proc
-BuildRequires:	libxml2-utils
-BuildRequires:	automoc
+BuildRequires:	xsltproc
 BuildRequires:	mysql-devel
 BuildRequires:	boost-devel
+BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(soprano)
 Requires:	qt4-database-plugin-mysql
 Requires:	mysql-core
@@ -93,13 +93,15 @@ based on %{name}
 %setup -q
 
 %build
-%cmake_kde4 -DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld -DCONFIG_INSTALL_DIR=%{_sysconfdir}
+%cmake_kde4 \
+	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld \
+	-DCONFIG_INSTALL_DIR=%{_sysconfdir}
 %make
 
 %install
 %makeinstall_std -C build
-mkdir %buildroot%_libdir/qt4
-mv %buildroot%_libdir/plugins %buildroot%_libdir/qt4/
+mkdir %{buildroot}%{_libdir}/qt4
+mv %{buildroot}%{_libdir}/plugins %{buildroot}%{_libdir}/qt4/
 
 %changelog
 * Wed Nov 07 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:1.8.1-1
