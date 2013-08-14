@@ -1,7 +1,7 @@
-Name:		akonadi
 Summary:	An extensible cross-desktop storage service for PIM
+Name:		akonadi
 Epoch:		1
-Version:	1.9.2
+Version:	1.10.2
 Release:	1
 License:	LGPLv2+
 Group:		Networking/WWW
