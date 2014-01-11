@@ -1,7 +1,7 @@
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	1.10.3
-Release:	5
+Release:	6
 Epoch:		1
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -20,14 +20,13 @@ BuildRequires:	qt4-qtdbus
 BuildRequires:	shared-mime-info >= 0.20
 BuildRequires:	xsltproc
 BuildRequires:	boost-devel
-BuildRequires:	mysql-devel
+BuildRequires:	mariadb-devel
 BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(soprano)
 Requires:	qt4-database-plugin-mysql
-Requires:	mysql-core
-Requires:	mysql-common
+Requires:	mariadb-common
 # Needed for mysqlcheck  which is used in akonadi
-Requires:	mysql-client
+Requires:	mariadb-client
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data
