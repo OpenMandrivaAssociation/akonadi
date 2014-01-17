@@ -23,7 +23,7 @@ BuildRequires:	boost-devel
 BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(soprano)
 Requires:	qt4-database-plugin-mysql
-%if %{mdvver} >= 201400
+%if %{mdvver} >= 201410
 BuildRequires:	mariadb-devel
 Requires:	mariadb-common
 # Needed for mysqlcheck  which is used in akonadi
