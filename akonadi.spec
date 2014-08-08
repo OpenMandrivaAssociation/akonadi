@@ -22,6 +22,7 @@ BuildRequires:	xsltproc
 BuildRequires:	boost-devel
 BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(soprano)
+BuildRequires:	extra-cmake-modules5
 Requires:	qt5-database-plugin-mysql
 %if %{mdvver} >= 201400
 BuildRequires:	mariadb-devel
