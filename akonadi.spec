@@ -1,7 +1,7 @@
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	1.12.1
-Release:	3
+Version:	1.12.91
+Release:	1
 Epoch:		1
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -12,7 +12,7 @@ Url:		http://pim.kde.org/akonadi/
 %else
 %define ftpdir stable
 %endif
-Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/akonadi/src/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/stable/akonadi/src/%{name}-%{version}.tar.bz2
 BuildRequires:	automoc
 BuildRequires:	kde4-macros
 BuildRequires:	libxml2-utils
@@ -22,7 +22,7 @@ BuildRequires:	xsltproc
 BuildRequires:	boost-devel
 BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(soprano)
-Requires:	qt4-database-plugin-mysql
+Requires:	qt5-database-plugin-mysql
 %if %{mdvver} >= 201400
 BuildRequires:	mariadb-devel
 Requires:	mariadb-common
@@ -46,6 +46,16 @@ providing concurrent read, write, and query access.
 %{_sysconfdir}/akonadi
 %{_datadir}/dbus-1/services/*
 %{_datadir}/mime/packages/akonadi-mime.xml
+
+#------------------------------------------------------
+%package -n qt4-database-plugin-sqlite3
+Summary: Improved Sqlite 3.x support plugin for Qt 4.x
+Group: Databases
+
+%description -n qt4-database-plugin-sqlite3
+Improved Sqlite 3.x support plugin for Qt 4.x
+
+%files -n qt4-database-plugin-sqlite3
 %{_libdir}/qt4/plugins/sqldrivers/libqsqlite3.so
 
 #------------------------------------------------------
@@ -74,7 +84,24 @@ Group:		System/Libraries
 %{name} library.
 
 %files -n %{libakonadiprotocolinternals}
-%{_kde_libdir}/libakonadiprotocolinternals.so.%{akonadiprotocolinternals_major}*
+%{_kde_libdir}/libakonadiprotocolinternals.so.%{akonadiprotocolinternals_major}
+%{_kde_libdir}/libakonadiprotocolinternals.so.1.12*
+
+#------------------------------------------------------
+
+%define q5akonadiprotocolinternals_major 2
+%define q5libakonadiprotocolinternals %mklibname akonadiprotocolinternals %{q5akonadiprotocolinternals_major}
+
+%package -n %{q5libakonadiprotocolinternals}
+Summary:	%{name} library
+Group:		System/Libraries
+
+%description -n %{q5libakonadiprotocolinternals}
+%{name} library.
+
+%files -n %{q5libakonadiprotocolinternals}
+%{_kde_libdir}/libakonadiprotocolinternals.so.%{q5akonadiprotocolinternals_major}*
+%{_kde_libdir}/libakonadiprotocolinternals.so.1.7*
 
 #------------------------------------------------------
 
@@ -105,9 +132,23 @@ based on %{name}
 	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld \
 	-DCONFIG_INSTALL_DIR=%{_sysconfdir}
 %make
+cd ..
+mv build build-qt4
+
+%cmake \
+	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld \
+	-DCONFIG_INSTALL_DIR=%{_sysconfdir} \
+	-DQT5_BUILD:BOOL=ON
+%make
+cd ..
+mv build build-qt5
 
 %install
+ln -s build-qt4 build
 %makeinstall_std -C build
 mkdir %{buildroot}%{_libdir}/qt4
 mv %{buildroot}%{_libdir}/plugins %{buildroot}%{_libdir}/qt4/
 
+rm build
+ln -s build-qt5 build
+%makeinstall_std -C build
