@@ -87,7 +87,7 @@ Qt4 %{name} library.
 
 %files -n %{libakonadiprotocolinternals}
 %{_kde_libdir}/libakonadiprotocolinternals.so.%{akonadiprotocolinternals_major}
-%{_kde_libdir}/libakonadiprotocolinternals.so.1.12*
+%{_kde_libdir}/libakonadiprotocolinternals.so.1.13*
 
 #------------------------------------------------------
 
