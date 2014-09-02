@@ -83,7 +83,7 @@ Summary:	%{name} library
 Group:		System/Libraries
 
 %description -n %{libakonadiprotocolinternals}
-%{name} library.
+Qt4 %{name} library.
 
 %files -n %{libakonadiprotocolinternals}
 %{_kde_libdir}/libakonadiprotocolinternals.so.%{akonadiprotocolinternals_major}
@@ -99,7 +99,7 @@ Summary:	%{name} library
 Group:		System/Libraries
 
 %description -n %{q5libakonadiprotocolinternals}
-%{name} library.
+Qt5 %{name} library.
 
 %files -n %{q5libakonadiprotocolinternals}
 %{_kde_libdir}/libakonadiprotocolinternals.so.%{q5akonadiprotocolinternals_major}*
