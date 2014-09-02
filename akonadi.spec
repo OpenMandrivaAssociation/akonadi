@@ -52,6 +52,7 @@ providing concurrent read, write, and query access.
 %package -n qt4-database-plugin-sqlite3
 Summary: Improved Sqlite 3.x support plugin for Qt 4.x
 Group: Databases
+Conflicts: akonadi < 1.12.91-1
 
 %description -n qt4-database-plugin-sqlite3
 Improved Sqlite 3.x support plugin for Qt 4.x
