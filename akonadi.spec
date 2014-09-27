@@ -1,7 +1,7 @@
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	1.13.0
-Release:	1
+Release:	2
 Epoch:		1
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -146,11 +146,11 @@ cd ..
 mv build build-qt5
 
 %install
+ln -s build-qt5 build
+%makeinstall_std -C build
+
+rm build
 ln -s build-qt4 build
 %makeinstall_std -C build
 mkdir %{buildroot}%{_libdir}/qt4
 mv %{buildroot}%{_libdir}/plugins %{buildroot}%{_libdir}/qt4/
-
-rm build
-ln -s build-qt5 build
-%makeinstall_std -C build
