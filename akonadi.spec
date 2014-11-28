@@ -1,7 +1,9 @@
+%bcond_with	qt5
+
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	1.13.0
-Release:	2
+Release:	3
 Epoch:		1
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -22,7 +24,9 @@ BuildRequires:	xsltproc
 BuildRequires:	boost-devel
 BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(soprano)
+%if %{with qt5}
 BuildRequires:	extra-cmake-modules5
+%endif
 Requires:		qt4-database-plugin-mysql
 %if %{mdvver} >= 201400
 BuildRequires:	mariadb-devel
@@ -91,6 +95,7 @@ Qt4 %{name} library.
 
 #------------------------------------------------------
 
+%if %{with qt5}
 %define q5akonadiprotocolinternals_major 2
 %define q5libakonadiprotocolinternals %mklibname akonadiprotocolinternals %{q5akonadiprotocolinternals_major}
 
@@ -104,7 +109,7 @@ Qt5 %{name} library.
 %files -n %{q5libakonadiprotocolinternals}
 %{_kde_libdir}/libakonadiprotocolinternals.so.%{q5akonadiprotocolinternals_major}*
 %{_kde_libdir}/libakonadiprotocolinternals.so.1.7*
-
+%endif
 #------------------------------------------------------
 
 %package devel
@@ -137,6 +142,7 @@ based on %{name}
 cd ..
 mv build build-qt4
 
+%if %{with qt5}
 %cmake \
 	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld \
 	-DCONFIG_INSTALL_DIR=%{_sysconfdir} \
@@ -144,12 +150,14 @@ mv build build-qt4
 %make
 cd ..
 mv build build-qt5
+%endif
 
 %install
+%if %{with qt5}
 ln -s build-qt5 build
 %makeinstall_std -C build
-
 rm build
+%endif
 ln -s build-qt4 build
 %makeinstall_std -C build
 mkdir %{buildroot}%{_libdir}/qt4
