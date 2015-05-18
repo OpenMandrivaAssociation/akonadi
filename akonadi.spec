@@ -1,4 +1,6 @@
 %bcond_with	qt5
+# (tpg) needed for boost
+%define _disable_ld_no_undefined 1
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
