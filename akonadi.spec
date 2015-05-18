@@ -137,6 +137,8 @@ based on %{name}
 %setup -q
 
 %build
+%global optflags %optflags -fdisable-strict-aliasing
+
 %cmake_kde4 \
 	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld \
 	-DCONFIG_INSTALL_DIR=%{_sysconfdir}
