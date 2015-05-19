@@ -17,6 +17,10 @@ Url:		http://pim.kde.org/akonadi/
 %define ftpdir stable
 %endif
 Source0:	ftp://ftp.kde.org/pub/kde/stable/akonadi/src/%{name}-%{version}.tar.bz2
+Patch0:		upstream-do_not_crash_when_setmntent_returns_NULL.patch
+Patch1:		upstream_dont_call_insert_from_Q_ASSERT.patch
+Patch2:		upstream-fix_buffer_overflow_in_AKTEST_FAKESERVER_MAIN.patch
+Patch3:		upstream-fix_typo_in_if_condition.patch
 BuildRequires:	automoc
 BuildRequires:	kde4-macros
 BuildRequires:	libxml2-utils
@@ -135,6 +139,10 @@ based on %{name}
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %global optflags %optflags -fdisable-strict-aliasing

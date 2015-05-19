@@ -1,0 +1,30 @@
+commit c516ec5c28d603aea0df6165f66a3a5d0a0191c4
+Author: Dan Vrátil <dvratil@redhat.com>
+Date:   Fri Sep 19 10:50:23 2014 +0200
+
+    Don't call insert() from Q_ASSERT - breaks unit-tests in Release mode
+
+diff --git a/server/tests/unittest/collectionreferencetest.cpp b/server/tests/unittest/collectionreferencetest.cpp
+index 1700c75..1b10c55 100644
+--- a/server/tests/unittest/collectionreferencetest.cpp
++++ b/server/tests/unittest/collectionreferencetest.cpp
+@@ -45,7 +45,8 @@ public:
+         Resource res;
+         res.setId(1);
+         res.setName(QLatin1String(name));
+-        Q_ASSERT(res.insert());
++        const bool success = res.insert();
++        Q_ASSERT(success);
+         mResource = res;
+         return res;
+     }
+@@ -57,7 +58,8 @@ public:
+         col.setName(QLatin1String(name));
+         col.setRemoteId(QLatin1String(name));
+         col.setResource(mResource);
+-        Q_ASSERT(col.insert());
++        const bool success = col.insert();
++        Q_ASSERT(success);
+         return col;
+     }
+ 
