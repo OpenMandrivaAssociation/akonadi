@@ -64,7 +64,6 @@ Improved Sqlite 3.x support plugin for Qt 5.x
 %package common
 Group:		Networking/WWW
 Summary:	Dummy package to override old
-Obsoletes:	%{mklibname akonadiprotocolinternals 1}
 Obsoletes:	%{mklibname akonadiprotocolinternals 2}
 
 %description common
