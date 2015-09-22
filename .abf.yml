@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   akonadi-15.08.0.tar.xz: 06dec25cee0151766fe5aa3628aeae2396ed0268
+sources:
+  akonadi-15.08.1.tar.xz: 9827d902370639403eb57f56e6a1205ce9a3330b
