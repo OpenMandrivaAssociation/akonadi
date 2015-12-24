@@ -4,7 +4,7 @@
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	15.12.0
-Release:	1
+Release:	2
 Epoch:		1
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -31,7 +31,7 @@ BuildRequires:	cmake(Qt5Xml)
 BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5Test)
 BuildRequires:	cmake(SharedMimeInfo)
-BuildRequires:	mariadb-devel
+BuildRequires:	pkgconfig(mariadb)
 # (tpg) does not work with sqlite
 Requires:	qt5-qtbase-database-plugin-mysql
 Requires:	mariadb-common
