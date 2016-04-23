@@ -3,8 +3,8 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	15.12.3
-Release:	2
+Version:	16.04.0
+Release:	1
 Epoch:		1
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -49,6 +49,11 @@ providing concurrent read, write, and query access.
 %{_sysconfdir}/akonadi
 %{_datadir}/dbus-1/services/*
 %{_datadir}/mime/packages/akonadi-mime.xml
+%{_datadir}/kf5/akonadi
+%{_datadir}/kf5/akonadi_knut_resource
+%{_datadir}/akonadi
+%{_datadir}/config.kcfg/resourcebase.kcfg
+%{_libdir}/qt5/plugins/akonadi/akonadi_test_searchplugin.so
 
 #------------------------------------------------------
 %package -n qt5-database-plugin-sqlite3
@@ -60,6 +65,18 @@ Improved Sqlite 3.x support plugin for Qt 5.x
 
 %files -n qt5-database-plugin-sqlite3
 %{_libdir}/qt5/plugins/sqldrivers/libqsqlite3.so
+
+#------------------------------------------------------
+%package -n qt5-designer-plugin-akonadiwidgets
+Summary: Akonadi Widgets for Qt Designer
+Group: Development/KDE and Qt
+
+%description -n qt5-designer-plugin-akonadiwidgets
+Akonadi Widgets for Qt Designer
+
+%files -n qt5-designer-plugin-akonadiwidgets
+%{_libdir}/qt5/plugins/designer/akonadi5widgets.so
+
 
 #------------------------------------------------------
 
@@ -77,6 +94,10 @@ Dummy package to override old.
 
 #------------------------------------------------------
 
+%libpackage KF5AkonadiAgentBase 5
+%libpackage KF5AkonadiCore 5
+%libpackage KF5AkonadiWidgets 5
+%libpackage KF5AkonadiXml 5
 %libpackage KF5AkonadiPrivate 5
 
 #------------------------------------------------------
@@ -84,6 +105,10 @@ Dummy package to override old.
 %package devel
 Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
+Requires:	%{mklibname KF5AkonadiAgentBase 5} = %{EVRD}
+Requires:	%{mklibname KF5AkonadiCore 5} = %{EVRD}
+Requires:	%{mklibname KF5AkonadiWidgets 5} = %{EVRD}
+Requires:	%{mklibname KF5AkonadiXml 5} = %{EVRD}
 Requires:	%{mklibname KF5AkonadiPrivate 5} = %{EVRD}
 Requires:	akonadi-common = %{EVRD}
 
@@ -94,7 +119,8 @@ based on %{name}
 %files devel
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/cmake/KF5AkonadiServer
+%{_libdir}/cmake/KF5Akonadi
+%{_libdir}/qt5/mkspecs/modules/qt_Akonadi*.pri
 %{_datadir}/dbus-1/interfaces/*.xml
 
 #--------------------------------------------------------------------
