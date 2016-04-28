@@ -4,7 +4,7 @@
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	16.04.0
-Release:	1
+Release:	2
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -134,6 +134,7 @@ Requires:	%{mklibname KF5AkonadiWidgets 5} = %{EVRD}
 Requires:	%{mklibname KF5AkonadiXml 5} = %{EVRD}
 Requires:	%{mklibname KF5AkonadiPrivate 5} = %{EVRD}
 Requires:	akonadi-common = %{EVRD}
+Requires:	akonadi = %{EVRD}
 
 %description devel
 This package contains header files needed if you wish to build applications
