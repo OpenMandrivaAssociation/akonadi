@@ -3,7 +3,7 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	16.08.3
+Version:	16.12.0
 Release:	1
 Epoch:		4
 License:	LGPLv2+
@@ -114,6 +114,7 @@ Dummy package to override old.
 %files common
 %doc README
 %config %{_sysconfdir}/akonadi.categories
+%config %{_sysconfdir}/akonadi.renamecategories
 
 #------------------------------------------------------
 
