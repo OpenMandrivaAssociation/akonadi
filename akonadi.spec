@@ -9,13 +9,8 @@ Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
 Url:		http://pim.kde.org/akonadi/
-%define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
-%if %{is_beta}
-%define ftpdir unstable
-%else
-%define ftpdir stable
-%endif
-Source0:	http://download.kde.org/%{ftpdir}/applications/%{version}/src/%{name}-%{version}.tar.xz
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	libxml2-utils
 BuildRequires:	shared-mime-info >= 0.20
 BuildRequires:	xsltproc
