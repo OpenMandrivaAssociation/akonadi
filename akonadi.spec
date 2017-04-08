@@ -3,7 +3,7 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	17.03.80
+Version:	17.03.90
 Release:	1
 Epoch:		4
 License:	LGPLv2+
@@ -63,7 +63,7 @@ Requires:	mariadb-client
 An extensible cross-desktop storage service for PIM data and meta data
 providing concurrent read, write, and query access.
 
-%files
+%files -f akonadi.lang
 %{_bindir}/*
 %{_sysconfdir}/akonadi
 %{_datadir}/dbus-1/services/*
@@ -158,3 +158,6 @@ based on %{name}
 
 %install
 %ninja_install -C build
+%find_lang libakonadi5
+%find_lang akonadi_knut_resource
+cat *.lang >akonadi.lang
