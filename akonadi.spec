@@ -132,6 +132,7 @@ Requires:	%{mklibname KF5AkonadiXml 5} = %{EVRD}
 Requires:	%{mklibname KF5AkonadiPrivate 5} = %{EVRD}
 Requires:	akonadi-common = %{EVRD}
 Requires:	akonadi = %{EVRD}
+Requires:	boost-devel
 
 %description devel
 This package contains header files needed if you wish to build applications
