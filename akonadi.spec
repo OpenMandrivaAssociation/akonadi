@@ -4,7 +4,7 @@
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	17.04.1
-Release:	1
+Release:	2
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -59,42 +59,117 @@ Requires:	mariadb-server
 # Needed for mysqlcheck  which is used in akonadi
 Requires:	mariadb-client
 # (tpg) obsolete old lang packages
-Provides:	kde-l10n = 3:17.04.0
-Obsoletes:	kde-l10n < 3:17.04.0
 Provides:	kde-l10n = 17.04.0
 Obsoletes:	kde-l10n < 17.04.0
-Provides:	kde-l10n-de = 3:17.04.0
+Obsoletes:	kde-l10n-ar < 3:17.04.0
+Provides:	kde-l10n-ar = 3:17.04.0
+Obsoletes:	kde-l10n-ast < 3:17.04.0
+Provides:	kde-l10n-ast = 3:17.04.0
+Obsoletes:	kde-l10n-bg < 3:17.04.0
+Provides:	kde-l10n-bg = 3:17.04.0
+Obsoletes:	kde-l10n-bs < 3:17.04.0
+Provides:	kde-l10n-bs = 3:17.04.0
+Obsoletes:	kde-l10n-ca < 3:17.04.0
+Provides:	kde-l10n-ca = 3:17.04.0
+Obsoletes:	kde-l10n-cs < 3:17.04.0
+Provides:	kde-l10n-cs = 3:17.04.0
+Obsoletes:	kde-l10n-da < 3:17.04.0
+Provides:	kde-l10n-da = 3:17.04.0
 Obsoletes:	kde-l10n-de < 3:17.04.0
-Provides:	kde-l10n-en_GB = 3:17.04.0
+Provides:	kde-l10n-de = 3:17.04.0
+Obsoletes:	kde-l10n-el < 3:17.04.0
+Provides:	kde-l10n-el = 3:17.04.0
 Obsoletes:	kde-l10n-en_GB < 3:17.04.0
-Provides:	kde-l10n-es = 3:17.04.0
+Provides:	kde-l10n-en_GB = 3:17.04.0
+Obsoletes:	kde-l10n-en_US < 3:17.04.0
+Provides:	kde-l10n-en_US = 3:17.04.0
+Obsoletes:	kde-l10n-eo < 3:17.04.0
+Provides:	kde-l10n-eo = 3:17.04.0
 Obsoletes:	kde-l10n-es < 3:17.04.0
-Provides:	kde-l10n-fr = 3:17.04.0
+Provides:	kde-l10n-es = 3:17.04.0
+Obsoletes:	kde-l10n-et < 3:17.04.0
+Provides:	kde-l10n-et = 3:17.04.0
+Obsoletes:	kde-l10n-eu < 3:17.04.0
+Provides:	kde-l10n-eu = 3:17.04.0
+Obsoletes:	kde-l10n-fa < 3:17.04.0
+Provides:	kde-l10n-fa = 3:17.04.0
+Obsoletes:	kde-l10n-fi < 3:17.04.0
+Provides:	kde-l10n-fi = 3:17.04.0
 Obsoletes:	kde-l10n-fr < 3:17.04.0
-Provides:	kde-l10n-it = 3:17.04.0
+Provides:	kde-l10n-fr = 3:17.04.0
+Obsoletes:	kde-l10n-ga < 3:17.04.0
+Provides:	kde-l10n-ga = 3:17.04.0
+Obsoletes:	kde-l10n-gl < 3:17.04.0
+Provides:	kde-l10n-gl = 3:17.04.0
+Obsoletes:	kde-l10n-he < 3:17.04.0
+Provides:	kde-l10n-he = 3:17.04.0
+Obsoletes:	kde-l10n-hi < 3:17.04.0
+Provides:	kde-l10n-hi = 3:17.04.0
+Obsoletes:	kde-l10n-hr < 3:17.04.0
+Provides:	kde-l10n-hr = 3:17.04.0
+Obsoletes:	kde-l10n-hu < 3:17.04.0
+Provides:	kde-l10n-hu = 3:17.04.0
+Obsoletes:	kde-l10n-ia < 3:17.04.0
+Provides:	kde-l10n-ia = 3:17.04.0
+Obsoletes:	kde-l10n-id < 3:17.04.0
+Provides:	kde-l10n-id = 3:17.04.0
+Obsoletes:	kde-l10n-is < 3:17.04.0
+Provides:	kde-l10n-is = 3:17.04.0
 Obsoletes:	kde-l10n-it < 3:17.04.0
-Provides:	kde-l10n-ja = 3:17.04.0
+Provides:	kde-l10n-it = 3:17.04.0
 Obsoletes:	kde-l10n-ja < 3:17.04.0
-Provides:	kde-l10n-ko = 3:17.04.0
+Provides:	kde-l10n-ja = 3:17.04.0
+Obsoletes:	kde-l10n-kk < 3:17.04.0
+Provides:	kde-l10n-kk = 3:17.04.0
+Obsoletes:	kde-l10n-km < 3:17.04.0
+Provides:	kde-l10n-km = 3:17.04.0
 Obsoletes:	kde-l10n-ko < 3:17.04.0
-Provides:	kde-l10n-nb = 3:17.04.0
+Provides:	kde-l10n-ko = 3:17.04.0
+Obsoletes:	kde-l10n-lt < 3:17.04.0
+Provides:	kde-l10n-lt = 3:17.04.0
+Obsoletes:	kde-l10n-lv < 3:17.04.0
+Provides:	kde-l10n-lv = 3:17.04.0
+Obsoletes:	kde-l10n-mr < 3:17.04.0
+Provides:	kde-l10n-mr = 3:17.04.0
 Obsoletes:	kde-l10n-nb < 3:17.04.0
-Provides:	kde-l10n-nl = 3:17.04.0
+Provides:	kde-l10n-nb = 3:17.04.0
+Obsoletes:	kde-l10n-nds < 3:17.04.0
+Provides:	kde-l10n-nds = 3:17.04.0
 Obsoletes:	kde-l10n-nl < 3:17.04.0
-Provides:	kde-l10n-nn = 3:17.04.0
+Provides:	kde-l10n-nl = 3:17.04.0
 Obsoletes:	kde-l10n-nn < 3:17.04.0
-Provides:	kde-l10n-pl = 3:17.04.0
+Provides:	kde-l10n-nn = 3:17.04.0
+Obsoletes:	kde-l10n-pa < 3:17.04.0
+Provides:	kde-l10n-pa = 3:17.04.0
 Obsoletes:	kde-l10n-pl < 3:17.04.0
-Provides:	kde-l10n-pt_BR = 3:17.04.0
+Provides:	kde-l10n-pl = 3:17.04.0
+Obsoletes:	kde-l10n-pt < 3:17.04.0
+Provides:	kde-l10n-pt = 3:17.04.0
 Obsoletes:	kde-l10n-pt_BR < 3:17.04.0
-Provides:	kde-l10n-ro = 3:17.04.0
+Provides:	kde-l10n-pt_BR = 3:17.04.0
 Obsoletes:	kde-l10n-ro < 3:17.04.0
-Provides:	kde-l10n-ru = 3:17.04.0
+Provides:	kde-l10n-ro = 3:17.04.0
 Obsoletes:	kde-l10n-ru < 3:17.04.0
-Provides:	kde-l10n-zh_CN = 3:17.04.0
+Provides:	kde-l10n-ru = 3:17.04.0
+Obsoletes:	kde-l10n-sk < 3:17.04.0
+Provides:	kde-l10n-sk = 3:17.04.0
+Obsoletes:	kde-l10n-sl < 3:17.04.0
+Provides:	kde-l10n-sl = 3:17.04.0
+Obsoletes:	kde-l10n-sr < 3:17.04.0
+Provides:	kde-l10n-sr = 3:17.04.0
+Obsoletes:	kde-l10n-sv < 3:17.04.0
+Provides:	kde-l10n-sv = 3:17.04.0
+Obsoletes:	kde-l10n-tr < 3:17.04.0
+Provides:	kde-l10n-tr = 3:17.04.0
+Obsoletes:	kde-l10n-ug < 3:17.04.0
+Provides:	kde-l10n-ug = 3:17.04.0
+Obsoletes:	kde-l10n-uk < 3:17.04.0
+Provides:	kde-l10n-uk = 3:17.04.0
+Obsoletes:	kde-l10n-wa < 3:17.04.0
+Provides:	kde-l10n-wa = 3:17.04.0
 Obsoletes:	kde-l10n-zh_CN < 3:17.04.0
-Provides:	kde-l10n-zh_TW = 3:17.04.0
-Obsoletes:	kde-l10n-zh_TW < 3:17.04.0
+Provides:	kde-l10n-zh_CN = 3:17.04.0
+Conflicts:	task-plasma < 5.9.5-9
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data
@@ -138,7 +213,7 @@ Akonadi Widgets for Qt Designer
 %package common
 Group:		Networking/WWW
 Summary:	Dummy package to override old
-Obsoletes:	%{mklibname akonadiprotocolinternals 2}
+Obsoletes:	%{mklibname akonadiprotocolinternals 2} < 4:17.04.0
 
 %description common
 Dummy package to override old.
