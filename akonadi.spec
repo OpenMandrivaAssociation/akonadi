@@ -58,6 +58,8 @@ Requires:	mariadb-common
 Requires:	mariadb-server
 # Needed for mysqlcheck  which is used in akonadi
 Requires:	mariadb-client
+Conflicts:	kde-l10n < 3:17.04.0
+Conflicts:	kde-l10n < 17.04.0
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data
