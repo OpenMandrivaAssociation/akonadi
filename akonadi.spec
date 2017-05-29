@@ -4,7 +4,7 @@
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	17.04.0
-Release:	1
+Release:	2
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -58,6 +58,8 @@ Requires:	mariadb-common
 Requires:	mariadb-server
 # Needed for mysqlcheck  which is used in akonadi
 Requires:	mariadb-client
+Conflicts:	kde-l10n < 3:17.04.0
+Conflicts:	kde-l10n < 17.04.0
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data
