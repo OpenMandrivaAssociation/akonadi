@@ -58,8 +58,43 @@ Requires:	mariadb-common
 Requires:	mariadb-server
 # Needed for mysqlcheck  which is used in akonadi
 Requires:	mariadb-client
-Conflicts:	kde-l10n < 3:17.04.0
-Conflicts:	kde-l10n < 17.04.0
+# (tpg) obsolete old lang packages
+Provides:	kde-l10n = 3:17.04.0
+Obsoletes:	kde-l10n < 3:17.04.0
+Provides:	kde-l10n = 17.04.0
+Obsoletes:	kde-l10n < 17.04.0
+Provides:	kde-l10n-de = 3:17.04.0
+Obsoletes:	kde-l10n-de < 3:17.04.0
+Provides:	kde-l10n-en_GB = 3:17.04.0
+Obsoletes:	kde-l10n-en_GB < 3:17.04.0
+Provides:	kde-l10n-es = 3:17.04.0
+Obsoletes:	kde-l10n-es < 3:17.04.0
+Provides:	kde-l10n-fr = 3:17.04.0
+Obsoletes:	kde-l10n-fr < 3:17.04.0
+Provides:	kde-l10n-it = 3:17.04.0
+Obsoletes:	kde-l10n-it < 3:17.04.0
+Provides:	kde-l10n-ja = 3:17.04.0
+Obsoletes:	kde-l10n-ja < 3:17.04.0
+Provides:	kde-l10n-ko = 3:17.04.0
+Obsoletes:	kde-l10n-ko < 3:17.04.0
+Provides:	kde-l10n-nb = 3:17.04.0
+Obsoletes:	kde-l10n-nb < 3:17.04.0
+Provides:	kde-l10n-nl = 3:17.04.0
+Obsoletes:	kde-l10n-nl < 3:17.04.0
+Provides:	kde-l10n-nn = 3:17.04.0
+Obsoletes:	kde-l10n-nn < 3:17.04.0
+Provides:	kde-l10n-pl = 3:17.04.0
+Obsoletes:	kde-l10n-pl < 3:17.04.0
+Provides:	kde-l10n-pt_BR = 3:17.04.0
+Obsoletes:	kde-l10n-pt_BR < 3:17.04.0
+Provides:	kde-l10n-ro = 3:17.04.0
+Obsoletes:	kde-l10n-ro < 3:17.04.0
+Provides:	kde-l10n-ru = 3:17.04.0
+Obsoletes:	kde-l10n-ru < 3:17.04.0
+Provides:	kde-l10n-zh_CN = 3:17.04.0
+Obsoletes:	kde-l10n-zh_CN < 3:17.04.0
+Provides:	kde-l10n-zh_TW = 3:17.04.0
+Obsoletes:	kde-l10n-zh_TW < 3:17.04.0
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data
@@ -97,7 +132,6 @@ Akonadi Widgets for Qt Designer
 
 %files -n qt5-designer-plugin-akonadiwidgets
 %{_libdir}/qt5/plugins/designer/akonadi5widgets.so
-
 
 #------------------------------------------------------
 
