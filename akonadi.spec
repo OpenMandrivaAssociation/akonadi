@@ -4,7 +4,7 @@
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	17.04.0
-Release:	3
+Release:	4
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -169,6 +169,9 @@ Obsoletes:	kde-l10n-wa < 3:17.04.0
 Provides:	kde-l10n-wa = 3:17.04.0
 Obsoletes:	kde-l10n-zh_CN < 3:17.04.0
 Provides:	kde-l10n-zh_CN = 3:17.04.0
+Obsoletes:	kdepimlibs-core < 3:16.04.3-2
+Provides:	kdepimlibs-core = 3:16.04.3-1
+Conflicts:	kdepimlibs-core < 3:16.04.3-2
 Conflicts:	task-plasma < 5.9.5-9
 
 %description
