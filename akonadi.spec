@@ -3,7 +3,7 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	17.04.3
+Version:	17.07.90
 Release:	1
 Epoch:		4
 License:	LGPLv2+
@@ -243,6 +243,7 @@ providing concurrent read, write, and query access.
 %{_datadir}/akonadi
 %{_datadir}/config.kcfg/resourcebase.kcfg
 %{_libdir}/qt5/plugins/akonadi/akonadi_test_searchplugin.so
+%{_datadir}/icons/*/*/*/akonadi.*
 
 #------------------------------------------------------
 %package -n qt5-database-plugin-sqlite3
