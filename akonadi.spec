@@ -3,7 +3,7 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	17.08.3
+Version:	17.11.90
 Release:	1
 Epoch:		4
 License:	LGPLv2+
@@ -314,6 +314,7 @@ based on %{name}
 %{_libdir}/cmake/KF5Akonadi
 %{_libdir}/qt5/mkspecs/modules/qt_Akonadi*.pri
 %{_datadir}/dbus-1/interfaces/*.xml
+%{_datadir}/kdevappwizard/templates/*
 
 #--------------------------------------------------------------------
 
