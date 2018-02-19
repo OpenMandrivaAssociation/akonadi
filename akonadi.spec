@@ -3,8 +3,8 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	17.04.0
-Release:	5
+Version:	 17.12.2
+Release:	1
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -61,6 +61,7 @@ Requires:	mariadb-client
 # (tpg) obsolete old lang packages
 Provides:	kde-l10n = 17.04.0
 Obsoletes:	kde-l10n < 17.04.0
+Conflicts:	kde-l10n < 17.04.0
 Obsoletes:	kde-l10n-ar < 3:17.04.0
 Conflicts:	kde-l10n-ar < 3:17.04.0
 Provides:	kde-l10n-ar = 3:17.04.0
@@ -242,6 +243,7 @@ providing concurrent read, write, and query access.
 %{_datadir}/akonadi
 %{_datadir}/config.kcfg/resourcebase.kcfg
 %{_libdir}/qt5/plugins/akonadi/akonadi_test_searchplugin.so
+%{_datadir}/icons/*/*/*/akonadi.*
 
 #------------------------------------------------------
 %package -n qt5-database-plugin-sqlite3
@@ -265,13 +267,12 @@ Akonadi Widgets for Qt Designer
 %files -n qt5-designer-plugin-akonadiwidgets
 %{_libdir}/qt5/plugins/designer/akonadi5widgets.so
 
-
 #------------------------------------------------------
 
 %package common
 Group:		Networking/WWW
 Summary:	Dummy package to override old
-Obsoletes:	%{mklibname akonadiprotocolinternals 2}
+Obsoletes:	%{mklibname akonadiprotocolinternals 2} < 4:17.04.0
 
 %description common
 Dummy package to override old.
@@ -301,6 +302,7 @@ Requires:	%{mklibname KF5AkonadiXml 5} = %{EVRD}
 Requires:	%{mklibname KF5AkonadiPrivate 5} = %{EVRD}
 Requires:	akonadi-common = %{EVRD}
 Requires:	akonadi = %{EVRD}
+Requires:	boost-devel
 
 %description devel
 This package contains header files needed if you wish to build applications
@@ -312,6 +314,7 @@ based on %{name}
 %{_libdir}/cmake/KF5Akonadi
 %{_libdir}/qt5/mkspecs/modules/qt_Akonadi*.pri
 %{_datadir}/dbus-1/interfaces/*.xml
+%{_datadir}/kdevappwizard/templates/*
 
 #--------------------------------------------------------------------
 
