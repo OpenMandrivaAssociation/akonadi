@@ -42,7 +42,6 @@ BuildRequires:	cmake(KF5IconThemes)
 BuildRequires:	cmake(KF5WindowSystem)
 BuildRequires:	cmake(KF5Completion)
 BuildRequires:	cmake(KF5Crash)
-BuildRequires:	cmake(Sqlite)
 BuildRequires:	cmake(Backtrace)
 BuildRequires:	cmake(LibXml2)
 BuildRequires:	cmake(Gettext)
@@ -50,6 +49,7 @@ BuildRequires:	cmake(PythonInterp)
 BuildRequires:	boost-devel
 BuildRequires:	cmake(SharedMimeInfo)
 BuildRequires:	cmake(LibXslt)
+BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(mariadb)
 # (tpg) does not work with sqlite
 Requires:	qt5-qtbase-database-plugin-mysql
