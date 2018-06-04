@@ -3,7 +3,7 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	 17.12.2
+Version:	18.04.1
 Release:	1
 Epoch:		4
 License:	LGPLv2+
@@ -15,7 +15,7 @@ BuildRequires:	libxml2-utils
 BuildRequires:	shared-mime-info >= 0.20
 BuildRequires:	xsltproc
 BuildRequires:	boost-devel
-BuildRequires:	pkgconfig(soprano)
+#BuildRequires:	pkgconfig(soprano)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	cmake(ECM)
