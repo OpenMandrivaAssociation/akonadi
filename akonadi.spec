@@ -3,7 +3,7 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	18.04.3
+Version:	18.07.80
 Release:	1
 Epoch:		4
 License:	LGPLv2+
