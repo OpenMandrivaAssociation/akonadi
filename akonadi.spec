@@ -1,6 +1,9 @@
 # (tpg) needed for boost
 %define _disable_ld_no_undefined 1
 
+# Use mariadb instead of sqlite
+%bcond_with mariadb
+
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	18.12.1
@@ -51,13 +54,16 @@ BuildRequires:	cmake(SharedMimeInfo)
 BuildRequires:	cmake(LibXslt)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(mariadb)
-# (tpg) does not work with sqlite
-Requires:	qt5-qtbase-database-plugin-mysql
+%if %{with mariadb}
 Requires:	mariadb-common
 # (tpg) needed for mysqld
 Requires:	mariadb-server
 # Needed for mysqlcheck  which is used in akonadi
 Requires:	mariadb-client
+Requires:	qt5-qtbase-database-plugin-mysql
+%else
+Requires:	qt5-qtbase-database-plugin-sqlite3
+%endif
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data
@@ -152,6 +158,9 @@ based on %{name}
 %setup -q
 %apply_patches
 %cmake_kde5 \
+%if ! %{with mariadb}
+	-DDATABASE_BACKEND=SQLITE \
+%endif
 	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld \
 	-DCONFIG_INSTALL_DIR=%{_sysconfdir}
 
