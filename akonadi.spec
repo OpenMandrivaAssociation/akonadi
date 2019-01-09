@@ -62,7 +62,7 @@ Requires:	mariadb-server
 Requires:	mariadb-client
 Requires:	qt5-qtbase-database-plugin-mysql
 %else
-Requires:	qt5-qtbase-database-plugin-sqlite3
+Requires:	qt5-database-plugin-sqlite3
 %endif
 
 %description
