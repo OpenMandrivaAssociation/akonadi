@@ -93,6 +93,9 @@ Improved Sqlite 3.x support plugin for Qt 5.x
 %{_libdir}/qt5/plugins/sqldrivers/libqsqlite3.so
 
 #------------------------------------------------------
+# FIXME why does this fail to build on armv7hnl even though all
+# dependencies are there?
+%ifnarch %{arm}
 %package -n qt5-designer-plugin-akonadiwidgets
 Summary: Akonadi Widgets for Qt Designer
 Group: Development/KDE and Qt
@@ -102,6 +105,7 @@ Akonadi Widgets for Qt Designer
 
 %files -n qt5-designer-plugin-akonadiwidgets
 %{_libdir}/qt5/plugins/designer/akonadi5widgets.so
+%endif
 
 #------------------------------------------------------
 
