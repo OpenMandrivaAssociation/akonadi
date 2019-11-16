@@ -6,7 +6,7 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	19.08.3
+Version:	19.11.80
 Release:	1
 Epoch:		4
 License:	LGPLv2+
@@ -14,6 +14,7 @@ Group:		Networking/WWW
 Url:		http://pim.kde.org/akonadi/
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
+Patch0:		akonadi-19.11.80-qt-5.14.patch
 BuildRequires:	libxml2-utils
 BuildRequires:	shared-mime-info >= 0.20
 BuildRequires:	xsltproc
@@ -96,6 +97,7 @@ Improved Sqlite 3.x support plugin for Qt 5.x
 # FIXME why does this fail to build on armv7hnl even though all
 # dependencies are there?
 %ifnarch %{arm}
+
 %package -n qt5-designer-plugin-akonadiwidgets
 Summary: Akonadi Widgets for Qt Designer
 Group: Development/KDE and Qt
@@ -104,7 +106,7 @@ Group: Development/KDE and Qt
 Akonadi Widgets for Qt Designer
 
 %files -n qt5-designer-plugin-akonadiwidgets
-%{_libdir}/qt5/plugins/designer/akonadi5widgets.so
+%{_libdir}/qt5/plugins/designer/akonadiwidgets.so
 %endif
 
 #------------------------------------------------------
@@ -119,6 +121,7 @@ Dummy package to override old.
 
 %files common
 %doc README
+%{_sysconfdir}/apparmor.d/*
 %{_datadir}/qlogging-categories5/akonadi.categories
 %{_datadir}/qlogging-categories5/akonadi.renamecategories
 
@@ -159,8 +162,7 @@ based on %{name}
 #--------------------------------------------------------------------
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 %cmake_kde5 \
 %if ! %{with mariadb}
 	-DDATABASE_BACKEND=SQLITE \
