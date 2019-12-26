@@ -6,14 +6,14 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	19.11.90
+Version:	19.12.0
 Release:	1
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
 Url:		http://pim.kde.org/akonadi/
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
-Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		akonadi-19.11.80-qt-5.14.patch
 BuildRequires:	libxml2-utils
 BuildRequires:	shared-mime-info >= 0.20
@@ -175,6 +175,12 @@ based on %{name}
 
 %install
 %ninja_install -C build
+# FIXME workaround for crash in gdb 8.3.1 during gdb-add-index
+# on x86_64 and znver1
+strip --strip-unneeded %{buildroot}%{_libdir}/libKF5Akonadi*.so.* \
+	%{buildroot}%{_libdir}/qt5/plugins/*/*.so \
+	%{buildroot}%{_bindir}/*
+
 %find_lang libakonadi5
 %find_lang akonadi_knut_resource
 cat *.lang >akonadi.lang
