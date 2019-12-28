@@ -175,11 +175,6 @@ based on %{name}
 
 %install
 %ninja_install -C build
-# FIXME workaround for crash in gdb 8.3.1 during gdb-add-index
-# on x86_64 and znver1
-strip --strip-unneeded %{buildroot}%{_libdir}/libKF5Akonadi*.so.* \
-	%{buildroot}%{_libdir}/qt5/plugins/*/*.so \
-	%{buildroot}%{_bindir}/*
 
 %find_lang libakonadi5
 %find_lang akonadi_knut_resource
