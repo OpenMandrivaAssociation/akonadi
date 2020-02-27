@@ -7,7 +7,7 @@
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	19.12.2
-Release:	2
+Release:	3
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -72,7 +72,7 @@ providing concurrent read, write, and query access.
 
 %files -f akonadi.lang
 %{_bindir}/*
-%{_sysconfdir}/akonadi
+%{_sysconfdir}/xdg/akonadi
 %{_datadir}/dbus-1/services/*
 %{_datadir}/mime/packages/akonadi-mime.xml
 %{_datadir}/kf5/akonadi
@@ -167,8 +167,7 @@ based on %{name}
 %if ! %{with mariadb}
 	-DDATABASE_BACKEND=SQLITE \
 %endif
-	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld \
-	-DCONFIG_INSTALL_DIR=%{_sysconfdir}
+	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld
 
 %build
 %ninja -C build
