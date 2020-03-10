@@ -22,9 +22,9 @@ diff -up akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.cpp.1~ akonadi-19.12.3/src/
          QString colName = QString::fromUtf16(
                                static_cast<const ushort *>(sqlite3_column_name16(stmt, i))
                            ).remove(QLatin1Char('"'));
-+        /*const QString tableName = QString::fromUtf16(
++        const QString tableName = QString::fromUtf16(
 +                              static_cast<const ushort *>(sqlite3_column_table_name16(stmt, i))
-+                          ).remove(QLatin1Char('"'));*/
++                          ).remove(QLatin1Char('"'));
  
          // must use typeName for resolving the type to match QSqliteDriver::record
          QString typeName = QString::fromUtf16(
@@ -42,7 +42,7 @@ diff -up akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.cpp.1~ akonadi-19.12.3/src/
          }
  
 -        QSqlField fld(colName, fieldType);
-+        QSqlField fld(colName, fieldType /*, tableName*/);
++        QSqlField fld(colName, fieldType, tableName);
          fld.setSqlType(stp);
          rInf.append(fld);
      }
