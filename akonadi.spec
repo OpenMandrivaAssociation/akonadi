@@ -1,20 +1,17 @@
-# (tpg) needed for boost
-%define _disable_ld_no_undefined 1
-
 # Use mariadb instead of sqlite
 %bcond_with mariadb
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	19.12.3
-Release:	1
+Release:	2
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
 Url:		http://pim.kde.org/akonadi/
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
-Patch0:		akonadi-19.11.80-qt-5.14.patch
+Patch0:		qsqlite3-fixes-from-qsqlite.patch
 BuildRequires:	libxml2-utils
 BuildRequires:	shared-mime-info >= 0.20
 BuildRequires:	xsltproc
@@ -170,7 +167,7 @@ based on %{name}
 	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld
 
 %build
-%ninja -C build
+%ninja -v -C build
 
 %install
 %ninja_install -C build

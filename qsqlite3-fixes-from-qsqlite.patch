@@ -1,0 +1,172 @@
+diff -up akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.cpp.1~ akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.cpp
+--- akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.cpp.1~	2020-02-07 07:11:22.000000000 +0100
++++ akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.cpp	2020-03-09 20:37:59.955785018 +0100
+@@ -75,7 +75,7 @@ QT_BEGIN_NAMESPACE
+ static QString _q_escapeIdentifier(const QString &identifier)
+ {
+     QString res = identifier;
+-    if (!identifier.isEmpty() && identifier.at(0) != QString(QLatin1Char('"')) && identifier.right(1) != QString(QLatin1Char('"'))) {
++    if (!identifier.isEmpty() && !identifier.startsWith(QLatin1Char('"')) && !identifier.endsWith(QLatin1Char('"'))) {
+         res.replace(QLatin1Char('"'), QStringLiteral("\"\""));
+         res.prepend(QLatin1Char('"')).append(QLatin1Char('"'));
+         res.replace(QLatin1Char('.'), QStringLiteral("\".\""));
+@@ -151,6 +151,7 @@ public:
+     }
+     sqlite3 *access;
+     QList<QSQLiteResult *> results;
++    QStringList notificationid;
+ };
+ 
+ class QSQLiteResultPrivate : public QSqlCachedResultPrivate
+@@ -221,6 +222,9 @@ void QSQLiteResultPrivate::initColumns(b
+         QString colName = QString::fromUtf16(
+                               static_cast<const ushort *>(sqlite3_column_name16(stmt, i))
+                           ).remove(QLatin1Char('"'));
++        /*const QString tableName = QString::fromUtf16(
++                              static_cast<const ushort *>(sqlite3_column_table_name16(stmt, i))
++                          ).remove(QLatin1Char('"'));*/
+ 
+         // must use typeName for resolving the type to match QSqliteDriver::record
+         QString typeName = QString::fromUtf16(
+@@ -231,7 +235,7 @@ void QSQLiteResultPrivate::initColumns(b
+ 
+         QVariant::Type fieldType;
+ 
+-        if (typeName.isEmpty()) {
++        if (!typeName.isEmpty()) {
+             fieldType = qGetColumnType(typeName);
+         } else {
+             // Get the proper type for the field based on stp value
+@@ -255,7 +259,7 @@ void QSQLiteResultPrivate::initColumns(b
+             }
+         }
+ 
+-        QSqlField fld(colName, fieldType);
++        QSqlField fld(colName, fieldType /*, tableName*/);
+         fld.setSqlType(stp);
+         rInf.append(fld);
+     }
+@@ -616,11 +620,11 @@ bool QSQLiteDriver::hasFeature(DriverFea
+     case SimpleLocking:
+     case FinishQuery:
+     case LowPrecisionNumbers:
++    case EventNotifications:
+         return true;
+     case QuerySize:
+     case NamedPlaceholders:
+     case BatchOperations:
+-    case EventNotifications:
+     case MultipleResultSets:
+     case CancelQuery:
+         return false;
+@@ -697,6 +701,11 @@ void QSQLiteDriver::close()
+             result->d_func()->finalize();
+         }
+ 
++	if (d->access && (d->notificationid.count() > 0)) {
++            d->notificationid.clear();
++            sqlite3_update_hook(d->access, nullptr, nullptr);
++        }
++
+         if (sqlite3_close(d->access) != SQLITE_OK)
+             setLastError(qMakeError(d->access, tr("Error closing database"),
+                                     QSqlError::ConnectionError));
+@@ -865,10 +874,83 @@ QVariant QSQLiteDriver::handle() const
+     return QVariant::fromValue(d->access);
+ }
+ 
++static void handle_sqlite_callback(void *qobj,int aoperation, char const *adbname, char const *atablename,
++                                   sqlite3_int64 arowid)
++{
++    Q_UNUSED(aoperation);
++    Q_UNUSED(adbname);
++    QSQLiteDriver *driver = static_cast<QSQLiteDriver *>(qobj);
++    if (driver) {
++        QMetaObject::invokeMethod(driver, "handleNotification", Qt::QueuedConnection,
++                                  Q_ARG(QString, QString::fromUtf8(atablename)), Q_ARG(qint64, arowid));
++    }
++}
++
+ QString QSQLiteDriver::escapeIdentifier(const QString &identifier, IdentifierType type) const
+ {
+     Q_UNUSED(type);
+     return _q_escapeIdentifier(identifier);
+ }
+ 
++bool QSQLiteDriver::subscribeToNotification(const QString &name)
++{
++    Q_D(QSQLiteDriver);
++    if (!isOpen()) {
++        qWarning("Database not open.");
++        return false;
++    }
++
++    if (d->notificationid.contains(name)) {
++        qWarning("Already subscribing to '%s'.", qPrintable(name));
++        return false;
++    }
++
++    //sqlite supports only one notification callback, so only the first is registered
++    d->notificationid << name;
++    if (d->notificationid.count() == 1)
++        sqlite3_update_hook(d->access, &handle_sqlite_callback, reinterpret_cast<void *> (this));
++
++    return true;
++}
++
++bool QSQLiteDriver::unsubscribeFromNotification(const QString &name)
++{
++    Q_D(QSQLiteDriver);
++    if (!isOpen()) {
++        qWarning("Database not open.");
++        return false;
++    }
++
++    if (!d->notificationid.contains(name)) {
++        qWarning("Not subscribed to '%s'.", qPrintable(name));
++        return false;
++    }
++
++    d->notificationid.removeAll(name);
++    if (d->notificationid.isEmpty())
++        sqlite3_update_hook(d->access, nullptr, nullptr);
++
++    return true;
++}
++
++QStringList QSQLiteDriver::subscribedToNotifications() const
++{
++    Q_D(const QSQLiteDriver);
++    return d->notificationid;
++}
++
++void QSQLiteDriver::handleNotification(const QString &tableName, qint64 rowid)
++{
++    Q_D(const QSQLiteDriver);
++    if (d->notificationid.contains(tableName)) {
++#if QT_DEPRECATED_SINCE(5, 15)
++QT_WARNING_PUSH
++QT_WARNING_DISABLE_DEPRECATED
++        emit notification(tableName);
++QT_WARNING_POP
++#endif
++        emit notification(tableName, QSqlDriver::UnknownSource, QVariant(rowid));
++    }
++}
++
+ QT_END_NAMESPACE
+diff -up akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.h.1~ akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.h
+--- akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.h.1~	2020-02-07 07:11:22.000000000 +0100
++++ akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.h	2020-03-09 20:18:00.222843225 +0100
+@@ -82,6 +82,11 @@ public:
+     QVariant handle() const override;
+     QString escapeIdentifier(const QString &identifier, IdentifierType) const override;
+ 
++    bool subscribeToNotification(const QString &name) override;
++    bool unsubscribeFromNotification(const QString &name) override;
++    QStringList subscribedToNotifications() const override;
++private Q_SLOTS:
++    void handleNotification(const QString &tableName, qint64 rowid);
+ private:
+     Q_DECLARE_PRIVATE(QSQLiteDriver)
+ };
