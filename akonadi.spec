@@ -50,6 +50,9 @@ BuildRequires:	cmake(PythonInterp)
 BuildRequires:	boost-devel
 BuildRequires:	cmake(SharedMimeInfo)
 BuildRequires:	cmake(LibXslt)
+BuildRequires:	cmake(AccountsQt5)
+BuildRequires:	cmake(KAccounts)
+BuildRequires:	pkgconfig(libaccounts-glib)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(mariadb)
 %if %{with mariadb}
