@@ -1,0 +1,16 @@
+diff -up akonadi-20.03.90/src/core/relation.cpp.omv~ akonadi-20.03.90/src/core/relation.cpp
+--- akonadi-20.03.90/src/core/relation.cpp.omv~	2020-04-09 15:05:00.913006657 +0200
++++ akonadi-20.03.90/src/core/relation.cpp	2020-04-09 15:13:13.711111199 +0200
+@@ -126,10 +126,12 @@ bool Relation::isValid() const
+     return (d->left.isValid() || !d->left.remoteId().isEmpty()) && (d->right.isValid() || !d->right.remoteId().isEmpty()) && !d->type.isEmpty();
+ }
+ 
++namespace Akonadi {
+ uint qHash(const Relation &relation)
+ {
+     return (3 * qHash(relation.left()) + qHash(relation.right()) + qHash(relation.type()) + qHash(relation.remoteId()));
+ }
++}
+ 
+ QDebug &operator<<(QDebug &debug, const Relation &relation)
+ {
