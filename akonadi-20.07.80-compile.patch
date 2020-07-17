@@ -1,0 +1,16 @@
+diff -up akonadi-20.07.80/src/qsqlite/src/qsql_sqlite.cpp.omv~ akonadi-20.07.80/src/qsqlite/src/qsql_sqlite.cpp
+--- akonadi-20.07.80/src/qsqlite/src/qsql_sqlite.cpp.omv~	2020-07-17 23:41:05.034480663 +0200
++++ akonadi-20.07.80/src/qsqlite/src/qsql_sqlite.cpp	2020-07-17 23:41:56.694984571 +0200
+@@ -917,10 +917,10 @@ void QSQLiteDriver::handleNotification(c
+ #if QT_DEPRECATED_SINCE(5, 15)
+ QT_WARNING_PUSH
+ QT_WARNING_DISABLE_DEPRECATED
+-        emit notification(tableName);
++        Q_EMIT notification(tableName);
+ QT_WARNING_POP
+ #endif
+-        emit notification(tableName, QSqlDriver::UnknownSource, QVariant(rowid));
++        Q_EMIT notification(tableName, QSqlDriver::UnknownSource, QVariant(rowid));
+     }
+ }
+ 

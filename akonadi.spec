@@ -3,8 +3,8 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	20.04.3
-Release:	2
+Version:	20.07.80
+Release:	1
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -12,6 +12,7 @@ Url:		http://pim.kde.org/akonadi/
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		qsqlite3-fixes-from-qsqlite.patch
+Patch1:		akonadi-20.07.80-compile.patch
 BuildRequires:	libxml2-utils
 BuildRequires:	shared-mime-info >= 0.20
 BuildRequires:	xsltproc
@@ -55,6 +56,9 @@ BuildRequires:	cmake(KAccounts)
 BuildRequires:	pkgconfig(libaccounts-glib)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(mariadb)
+BuildRequires:	pkgconfig(libpq)
+# Just to make sure CMake can find it
+BuildRequires:	postgresql-server
 %if %{with mariadb}
 Requires:	mariadb-common
 # (tpg) needed for mysqld
@@ -120,7 +124,6 @@ Obsoletes:	%{mklibname akonadiprotocolinternals 2} < 4:17.04.0
 Dummy package to override old.
 
 %files common
-%doc README
 %{_sysconfdir}/apparmor.d/*
 %{_datadir}/qlogging-categories5/akonadi.categories
 %{_datadir}/qlogging-categories5/akonadi.renamecategories
