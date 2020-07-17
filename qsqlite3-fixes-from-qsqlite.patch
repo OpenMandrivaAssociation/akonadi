@@ -147,10 +147,10 @@ diff -up akonadi-19.12.3/src/qsqlite/src/qsql_sqlite.cpp.1~ akonadi-19.12.3/src/
 +#if QT_DEPRECATED_SINCE(5, 15)
 +QT_WARNING_PUSH
 +QT_WARNING_DISABLE_DEPRECATED
-+        emit notification(tableName);
++        Q_EMIT notification(tableName);
 +QT_WARNING_POP
 +#endif
-+        emit notification(tableName, QSqlDriver::UnknownSource, QVariant(rowid));
++        Q_EMIT notification(tableName, QSqlDriver::UnknownSource, QVariant(rowid));
 +    }
 +}
 +
