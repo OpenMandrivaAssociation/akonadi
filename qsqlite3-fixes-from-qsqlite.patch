@@ -1,6 +1,6 @@
-diff -up akonadi-21.03.80/src/qsqlite/src/qsql_sqlite.cpp.1~ akonadi-21.03.80/src/qsqlite/src/qsql_sqlite.cpp
---- akonadi-21.03.80/src/qsqlite/src/qsql_sqlite.cpp.1~	2021-03-18 16:43:43.000000000 +0100
-+++ akonadi-21.03.80/src/qsqlite/src/qsql_sqlite.cpp	2021-03-21 12:09:30.710160352 +0100
+diff -up akonadi-21.12.0/src/qsqlite/src/qsql_sqlite.cpp.1~ akonadi-21.12.0/src/qsqlite/src/qsql_sqlite.cpp
+--- akonadi-21.12.0/src/qsqlite/src/qsql_sqlite.cpp.1~	2021-11-30 18:41:25.000000000 +0100
++++ akonadi-21.12.0/src/qsqlite/src/qsql_sqlite.cpp	2021-12-11 23:17:26.703944876 +0100
 @@ -45,7 +45,7 @@ QT_BEGIN_NAMESPACE
  static QString _q_escapeIdentifier(const QString &identifier)
  {
@@ -66,10 +66,10 @@ diff -up akonadi-21.03.80/src/qsqlite/src/qsql_sqlite.cpp.1~ akonadi-21.03.80/sr
 +            sqlite3_update_hook(d->access, nullptr, nullptr);
 +        }
 +
-         if (sqlite3_close(d->access) != SQLITE_OK)
+         if (sqlite3_close(d->access) != SQLITE_OK) {
              setLastError(qMakeError(d->access, tr("Error closing database"), QSqlError::ConnectionError));
-         d->access = nullptr;
-@@ -809,10 +816,83 @@ QVariant QSQLiteDriver::handle() const
+         }
+@@ -810,10 +817,83 @@ QVariant QSQLiteDriver::handle() const
      return QVariant::fromValue(d->access);
  }
  
@@ -153,10 +153,10 @@ diff -up akonadi-21.03.80/src/qsqlite/src/qsql_sqlite.cpp.1~ akonadi-21.03.80/sr
 +}
 +
  QT_END_NAMESPACE
-diff -up akonadi-21.03.80/src/qsqlite/src/qsql_sqlite.h.1~ akonadi-21.03.80/src/qsqlite/src/qsql_sqlite.h
---- akonadi-21.03.80/src/qsqlite/src/qsql_sqlite.h.1~	2021-03-18 16:43:43.000000000 +0100
-+++ akonadi-21.03.80/src/qsqlite/src/qsql_sqlite.h	2021-03-21 12:05:10.449594334 +0100
-@@ -48,6 +48,11 @@ public:
+diff -up akonadi-21.12.0/src/qsqlite/src/qsql_sqlite.h.1~ akonadi-21.12.0/src/qsqlite/src/qsql_sqlite.h
+--- akonadi-21.12.0/src/qsqlite/src/qsql_sqlite.h.1~	2021-11-30 18:41:25.000000000 +0100
++++ akonadi-21.12.0/src/qsqlite/src/qsql_sqlite.h	2021-12-11 23:07:17.338842776 +0100
+@@ -47,6 +47,11 @@ public:
      QVariant handle() const override;
      QString escapeIdentifier(const QString &identifier, IdentifierType) const override;
  
