@@ -68,6 +68,9 @@ Requires:	qt5-qtbase-database-plugin-mysql
 %else
 Requires:	qt5-database-plugin-sqlite3
 %endif
+# For QCH format docs
+BuildRequires: doxygen
+BuildRequires: qt5-assistant
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data
