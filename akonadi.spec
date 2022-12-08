@@ -3,7 +3,7 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	22.08.3
+Version:	22.12.0
 Release:	1
 Epoch:		4
 License:	LGPLv2+
@@ -165,6 +165,7 @@ based on %{name}
 %{_libdir}/qt5/mkspecs/modules/qt_Akonadi*.pri
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_docdir}/qt5/*.{qch,tags}
+%{_datadir}/kdevappwizard/templates/*
 
 #--------------------------------------------------------------------
 
