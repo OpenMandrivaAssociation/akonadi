@@ -145,11 +145,11 @@ Dummy package to override old.
 %package devel
 Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
-Requires:	%{mklibname KF5AkonadiAgentBase 5} = %{EVRD}
-Requires:	%{mklibname KF5AkonadiCore 5} = %{EVRD}
-Requires:	%{mklibname KF5AkonadiWidgets 5} = %{EVRD}
-Requires:	%{mklibname KF5AkonadiXml 5} = %{EVRD}
-Requires:	%{mklibname KF5AkonadiPrivate 5} = %{EVRD}
+Requires:	%{mklibname KF5AkonadiAgentBase} = %{EVRD}
+Requires:	%{mklibname KF5AkonadiCore} = %{EVRD}
+Requires:	%{mklibname KF5AkonadiWidgets} = %{EVRD}
+Requires:	%{mklibname KF5AkonadiXml} = %{EVRD}
+Requires:	%{mklibname KF5AkonadiPrivate} = %{EVRD}
 Requires:	akonadi-common = %{EVRD}
 Requires:	akonadi = %{EVRD}
 Requires:	boost-devel
