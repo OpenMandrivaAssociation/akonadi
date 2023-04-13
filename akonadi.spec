@@ -3,8 +3,8 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	22.12.3
-Release:	2
+Version:	23.03.90
+Release:	1
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -71,6 +71,11 @@ Requires:	qt5-database-plugin-sqlite3
 # For QCH format docs
 BuildRequires: doxygen
 BuildRequires: qt5-assistant
+Obsoletes: %{mklibname KPim5AkonadiAgentBase} < %{EVRD}
+Obsoletes: %{mklibname KPim5AkonadiCore} < %{EVRD}
+Obsoletes: %{mklibname KPim5AkonadiPrivate} < %{EVRD}
+Obsoletes: %{mklibname KPim5AkonadiWidgets} < %{EVRD}
+Obsoletes: %{mklibname KPim5AkonadiXml} < %{EVRD}
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data
@@ -114,7 +119,7 @@ Group: Development/KDE and Qt
 Akonadi Widgets for Qt Designer
 
 %files -n qt5-designer-plugin-akonadiwidgets
-%{_libdir}/qt5/plugins/designer/akonadiwidgets.so
+%{_libdir}/qt5/plugins/designer/akonadi5widgets.so
 %endif
 
 #------------------------------------------------------
@@ -134,22 +139,22 @@ Dummy package to override old.
 
 #------------------------------------------------------
 
-%libpackage KF5AkonadiAgentBase 5
-%libpackage KF5AkonadiCore 5
-%libpackage KF5AkonadiWidgets 5
-%libpackage KF5AkonadiXml 5
-%libpackage KF5AkonadiPrivate 5
+%libpackage KPim5AkonadiAgentBase 5
+%libpackage KPim5AkonadiCore 5
+%libpackage KPim5AkonadiWidgets 5
+%libpackage KPim5AkonadiXml 5
+%libpackage KPim5AkonadiPrivate 5
 
 #------------------------------------------------------
 
 %package devel
 Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
-Requires:	%{mklibname KF5AkonadiAgentBase} = %{EVRD}
-Requires:	%{mklibname KF5AkonadiCore} = %{EVRD}
-Requires:	%{mklibname KF5AkonadiWidgets} = %{EVRD}
-Requires:	%{mklibname KF5AkonadiXml} = %{EVRD}
-Requires:	%{mklibname KF5AkonadiPrivate} = %{EVRD}
+Requires:	%{mklibname KPim5AkonadiAgentBase} = %{EVRD}
+Requires:	%{mklibname KPim5AkonadiCore} = %{EVRD}
+Requires:	%{mklibname KPim5AkonadiWidgets} = %{EVRD}
+Requires:	%{mklibname KPim5AkonadiXml} = %{EVRD}
+Requires:	%{mklibname KPim5AkonadiPrivate} = %{EVRD}
 Requires:	akonadi-common = %{EVRD}
 Requires:	akonadi = %{EVRD}
 Requires:	boost-devel
@@ -162,6 +167,7 @@ based on %{name}
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/cmake/KF5Akonadi
+%{_libdir}/cmake/KPim5Akonadi
 %{_libdir}/qt5/mkspecs/modules/qt_Akonadi*.pri
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_docdir}/qt5/*.{qch,tags}
