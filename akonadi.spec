@@ -3,7 +3,7 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	23.04.3
+Version:	23.08.0
 Release:	1
 Epoch:		4
 License:	LGPLv2+
@@ -11,7 +11,6 @@ Group:		Networking/WWW
 Url:		http://pim.kde.org/akonadi/
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
-Patch0:		qsqlite3-fixes-from-qsqlite.patch
 BuildRequires:	libxml2-utils
 BuildRequires:	shared-mime-info >= 0.20
 BuildRequires:	xsltproc
@@ -66,7 +65,7 @@ Requires:	mariadb-server
 Requires:	mariadb-client
 Requires:	qt5-qtbase-database-plugin-mysql
 %else
-Requires:	qt5-database-plugin-sqlite3
+Requires:	qt5-database-plugin-sqlite
 %endif
 # For QCH format docs
 BuildRequires: doxygen
@@ -76,6 +75,7 @@ Obsoletes: %{mklibname KPim5AkonadiCore} < %{EVRD}
 Obsoletes: %{mklibname KPim5AkonadiPrivate} < %{EVRD}
 Obsoletes: %{mklibname KPim5AkonadiWidgets} < %{EVRD}
 Obsoletes: %{mklibname KPim5AkonadiXml} < %{EVRD}
+Obsoletes: qt5-database-plugin-sqlite3 < %{EVRD}
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data
@@ -94,17 +94,6 @@ providing concurrent read, write, and query access.
 %dir %{_libdir}/qt5/plugins/pim5
 %dir %{_libdir}/qt5/plugins/pim5/akonadi
 %{_libdir}/qt5/plugins/pim5/akonadi/akonadi_test_searchplugin.so
-
-#------------------------------------------------------
-%package -n qt5-database-plugin-sqlite3
-Summary: Improved Sqlite 3.x support plugin for Qt 5.x
-Group: Databases
-
-%description -n qt5-database-plugin-sqlite3
-Improved Sqlite 3.x support plugin for Qt 5.x
-
-%files -n qt5-database-plugin-sqlite3
-%{_libdir}/qt5/plugins/sqldrivers/libqsqlite3.so
 
 #------------------------------------------------------
 # FIXME why does this fail to build on armv7hnl even though all
