@@ -8,7 +8,7 @@ Release:	3
 Epoch:		4
 License:	LGPLv2+
 Group:		Networking/WWW
-Url:		http://pim.kde.org/akonadi/
+Url:		https://pim.kde.org/akonadi/
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	libxml2-utils
