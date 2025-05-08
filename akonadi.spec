@@ -6,8 +6,8 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e 's,/,-,g')
 
 Summary:	An extensible cross-desktop storage service for PIM
-Name:		plasma6-akonadi
-Version:	25.04.0
+Name:		akonadi
+Version:	25.04.1
 Release:	1
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -78,12 +78,20 @@ Requires:	qt6-qtbase-sql-sqlite
 %endif
 # For QCH format docs
 BuildRequires: doxygen
+# Renamed after 6.0 2025-05-08
+%rename plasma6-akonadi
+BuildSystem:	cmake
+%if ! %{with mariadb}
+BuildOption:	-DDATABASE_BACKEND=SQLITE
+%endif
+BuildOption:	-DMYSQLD_EXECUTABLE=%{_sbindir}/mariadbd
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %description
 An extensible cross-desktop storage service for PIM data and meta data
 providing concurrent read, write, and query access.
 
-%files -f akonadi.lang
+%files -f %{name}.lang
 %{_bindir}/*
 %{_sysconfdir}/xdg/akonadi
 %{_datadir}/dbus-1/services/*
@@ -140,6 +148,8 @@ Requires:	%{mklibname KPim6AkonadiXml} = %{EVRD}
 Requires:	%{mklibname KPim6AkonadiPrivate} = %{EVRD}
 Requires:	%{name} = %{EVRD}
 Requires:	boost-devel
+# Renamed after 6.0 2025-05-08
+%rename plasma6-akonadi-devel
 
 %description devel
 This package contains header files needed if you wish to build applications
@@ -151,26 +161,3 @@ based on %{name}
 %{_libdir}/cmake/KPim6Akonadi
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/kdevappwizard/templates/*
-
-#--------------------------------------------------------------------
-
-%prep
-%autosetup -p1 -n akonadi-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-%if ! %{with mariadb}
-	-DDATABASE_BACKEND=SQLITE \
-%endif
-	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja -v -C build
-
-%install
-%ninja_install -C build
-
-%find_lang libakonadi6
-%find_lang akonadi_knut_resource
-%find_lang akonadi-db-migrator
-cat *.lang >akonadi.lang
