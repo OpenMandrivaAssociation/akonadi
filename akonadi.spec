@@ -7,7 +7,7 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	25.04.3
+Version:	25.08.0
 Release:	1
 License:	LGPLv2+
 Group:		Networking/WWW
@@ -106,7 +106,11 @@ providing concurrent read, write, and query access.
 %{_datadir}/kf6/akonadi_knut_resource
 %dir %{_qtdir}/plugins/pim6
 %dir %{_qtdir}/plugins/pim6/akonadi
+%dir %{_qtdir}/plugins/pim6/akonadi/config
 %{_qtdir}/plugins/pim6/akonadi/akonadi_test_searchplugin.so
+%{_qtdir}/plugins/pim6/akonadi/config/knutconfig.so
+%{_qtdir}/qml/org/kde/akonadi
+%{_datadir}/applications/org.kde.akonadi.configdialog.desktop
 
 #------------------------------------------------------
 # FIXME why does this fail to build on armv7hnl even though all
@@ -130,6 +134,8 @@ Akonadi Widgets for Qt Designer
 
 %libpackage KPim6AkonadiCore 6
 
+%libpackage KPim6AkonadiAgentWidgetBase 6
+
 %libpackage KPim6AkonadiWidgets 6
 
 %libpackage KPim6AkonadiXml 6
@@ -146,6 +152,7 @@ Requires:	%{mklibname KPim6AkonadiCore} = %{EVRD}
 Requires:	%{mklibname KPim6AkonadiWidgets} = %{EVRD}
 Requires:	%{mklibname KPim6AkonadiXml} = %{EVRD}
 Requires:	%{mklibname KPim6AkonadiPrivate} = %{EVRD}
+Requires:	%{mklibname KPim6AkonadiAgentWidgetBase} = %{EVRD}
 Requires:	%{name} = %{EVRD}
 Requires:	boost-devel
 # Renamed after 6.0 2025-05-08
