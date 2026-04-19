@@ -7,8 +7,8 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	25.12.3
-Release:	2
+Version:	26.04.0
+Release:	1
 License:	LGPLv2+
 Group:		Networking/WWW
 Url:		https://pim.kde.org/akonadi/
@@ -112,6 +112,7 @@ providing concurrent read, write, and query access.
 %{_qtdir}/plugins/pim6/akonadi/config/knutconfig.so
 %{_qtdir}/qml/org/kde/akonadi
 %{_datadir}/applications/org.kde.akonadi.configdialog.desktop
+%{_userunitdir}/akonadi_control.service
 
 #------------------------------------------------------
 # FIXME why does this fail to build on armv7hnl even though all
