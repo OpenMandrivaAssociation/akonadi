@@ -7,8 +7,8 @@
 
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
-Version:	26.04.3
-Release:	3
+Version:	26.08.0
+Release:	1
 License:	LGPLv2+
 Group:		Networking/WWW
 Url:		https://pim.kde.org/akonadi/
@@ -112,6 +112,7 @@ providing concurrent read, write, and query access.
 %{_qtdir}/plugins/pim6/akonadi/config/knutconfig.so
 %{_qtdir}/qml/org/kde/akonadi
 %{_datadir}/applications/org.kde.akonadi.configdialog.desktop
+%{_datadir}/applications/org.kde.akonadi.desktop
 %{_userunitdir}/akonadi_control.service
 
 #------------------------------------------------------
@@ -170,3 +171,16 @@ based on %{name}
 %{_libdir}/cmake/KPim6Akonadi
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/kdevappwizard/templates/*
+
+%package python
+Summary:	Python bindings for %{name}
+Group:		Development/Python
+Requires:	%{name} = %{EVRD}
+Requires:	%{mklibname KPim6AkonadiCore} = %{EVRD}
+
+%description python
+PySide bindings for %{name}.
+
+%files python
+%{_libdir}/python*/site-packages/AkonadiCore.cpython-*.so
+%{_datadir}/PySide6/typesystems/typesystem_akonadi.xml
