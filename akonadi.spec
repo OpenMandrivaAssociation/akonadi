@@ -81,6 +81,7 @@ Requires:	qt6-qtbase-sql-sqlite
 BuildRequires: doxygen
 BuildRequires:	cmake(PySide6)
 BuildRequires:	cmake(Shiboken6)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	python%{pyver}dist(build)
 BuildRequires:	python-kcoreaddons
 # Renamed after 6.0 2025-05-08
