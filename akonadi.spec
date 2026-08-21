@@ -79,6 +79,10 @@ Requires:	qt6-qtbase-sql-sqlite
 %endif
 # For QCH format docs
 BuildRequires: doxygen
+BuildRequires:	cmake(PySide6)
+BuildRequires:	cmake(Shiboken6)
+BuildRequires:	python%{pyver}dist(build)
+BuildRequires:	python-kcoreaddons
 # Renamed after 6.0 2025-05-08
 %rename plasma6-akonadi
 BuildSystem:	cmake
