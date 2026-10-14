@@ -8,7 +8,7 @@
 Summary:	An extensible cross-desktop storage service for PIM
 Name:		akonadi
 Version:	26.08.2
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Networking/WWW
 Url:		https://pim.kde.org/akonadi/
@@ -81,7 +81,7 @@ Requires:	qt6-qtbase-sql-sqlite
 BuildRequires: doxygen
 BuildRequires:	cmake(PySide6)
 BuildRequires:	cmake(Shiboken6)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python%{pyver}dist(build)
 BuildRequires:	python-kcoreaddons
 # Renamed after 6.0 2025-05-08
